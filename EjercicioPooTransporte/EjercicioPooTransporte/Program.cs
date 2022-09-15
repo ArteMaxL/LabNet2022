@@ -47,27 +47,59 @@ namespace EjercicioPooTransporte
 
             void CargaCincoOmnibus()
             {
+                int contador = 5;
+                int numVehiculo = 1;
                 Console.WriteLine();
                 Console.WriteLine("A continuación cargaremos los pasajeros de 5 Omnibus");
-                for (int i = 0; i < 5; i++)
+                while (contador!= 0)
                 {
                     Console.WriteLine();
-                    Console.Write($"Omnibus {i + 1}: ");
-                    var entradaUsuario = int.Parse(Console.ReadLine());
-                    omnibuses.Add(new Omnibus(entradaUsuario));
+                    Console.Write($"Omnibus {numVehiculo}: ");
+                    if (!int.TryParse(Console.ReadLine(), out int num))
+                    {
+                        Console.WriteLine("El valor ingresado no es un número entero válido.");
+                        continue;
+                    }
+                    else if (num == 0)
+                    {
+                        Console.WriteLine("El número debe ser mayor a cero.");
+                        continue;
+                    }
+                    else
+                    {
+                        omnibuses.Add(new Omnibus(num));
+                        contador--;
+                        numVehiculo++;
+                    }
                 }
             }
 
             void CargaCincoTaxis()
             {
+                int contador = 5;
+                int numVehiculo = 1;
                 Console.WriteLine();
                 Console.WriteLine("A continuación cargaremos los pasajeros de 5 Taxis");
-                for (int i = 0; i < 5; i++)
+                while (contador != 0)
                 {
                     Console.WriteLine();
-                    Console.Write($"Taxi {i + 1}: ");
-                    var entradaUsuario = int.Parse(Console.ReadLine());
-                    taxis.Add(new Taxi(entradaUsuario));
+                    Console.Write($"Taxi {numVehiculo}: ");
+                    if (!int.TryParse(Console.ReadLine(), out int num))
+                    {
+                        Console.WriteLine("El valor ingresado no es un número entero válido.");
+                        continue;
+                    }
+                    else if (num == 0)
+                    {
+                        Console.WriteLine("El número debe ser mayor a cero.");
+                        continue;
+                    }
+                    else
+                    {
+                        taxis.Add(new Taxi(num));
+                        contador--;
+                        numVehiculo++;
+                    }
                 }
             }
 
