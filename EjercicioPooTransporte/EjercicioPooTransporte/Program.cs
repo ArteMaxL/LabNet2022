@@ -13,9 +13,29 @@ namespace EjercicioPooTransporte
             List<Omnibus> omnibuses = new List<Omnibus>();
             List<Taxi> taxis = new List<Taxi>();
 
-            Console.WriteLine("A continuación cargaremos 10 Transportes Públicos, 5 Omnibus y 5 Taxis");
-            Console.Write("Para comenzar por Omnibus presione 1, para Taxis presione 2: ");
-            string seleccion = Console.ReadLine();
+            Console.WriteLine("A continuación cargaremos 10 Transportes Públicos, 5 Omnibus y 5 Taxis\n");
+            Console.WriteLine("Presione 'q' si desea salir.");
+
+            string seleccion = null;
+            bool esValido = false;
+
+            do
+            {
+                Console.Write("Para comenzar por Omnibus presione 1, para Taxis presione 2: ");
+                seleccion = Console.ReadLine();
+                esValido = seleccion == "1" || seleccion == "2";
+                if (seleccion.ToLower() == "q")
+                {
+                    seleccion = "q";
+                    break;
+                }
+
+                if (!esValido)
+                {
+                    Console.WriteLine($"El valor ingresado '{seleccion}' no es una opción válida.\n");
+                }
+            } while (!esValido);
+
 
             switch (seleccion)
             {
@@ -34,6 +54,9 @@ namespace EjercicioPooTransporte
                     taxis.ForEach(Print);
                     Console.WriteLine("\nLista de Omnibus: ");
                     omnibuses.ForEach(Print);
+                    break;
+                case "q":
+                    Console.WriteLine("Ha salido del programa.");
                     break;
                 default:
                     Console.WriteLine("La opción ingresada no es válida.");
