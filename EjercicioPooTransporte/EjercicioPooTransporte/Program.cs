@@ -41,19 +41,20 @@ namespace EjercicioPooTransporte
             {
                 case "1":
                     CargaCincoOmnibus();
-                    CargaCincoTaxis();                    
-                    Console.WriteLine("\nLista de Omnibus: ");
-                    omnibuses.ForEach(Print);                    
-                    Console.WriteLine("\nLista de Taxis: ");
-                    taxis.ForEach(Print);
+                    CargaCincoTaxis();
+
+                    ImprimeOmnibus(omnibuses);
+                    ImprimeTaxis(taxis);
+
                     break;
+
                 case "2":
                     CargaCincoTaxis();
                     CargaCincoOmnibus();
-                    Console.WriteLine("\nLista de Taxis: ");
-                    taxis.ForEach(Print);
-                    Console.WriteLine("\nLista de Omnibus: ");
-                    omnibuses.ForEach(Print);
+
+                    ImprimeTaxis(taxis);
+                    ImprimeOmnibus(omnibuses);
+
                     break;
                 case "q":
                     Console.WriteLine("Ha salido del programa.");
@@ -63,8 +64,7 @@ namespace EjercicioPooTransporte
                     break;
             }
 
-            Console.WriteLine();
-            Console.WriteLine("==========================");
+            Console.WriteLine("\n=========================================");
             Console.WriteLine("Presione cualquier tecla para terminar...");
             Console.ReadKey();
 
@@ -72,18 +72,16 @@ namespace EjercicioPooTransporte
             {
                 int contador = 5;
                 int numVehiculo = 1;
-                Console.WriteLine();
-                Console.WriteLine("A continuación cargaremos los pasajeros de 5 Omnibus");
-                while (contador!= 0)
+                Console.WriteLine("\nA continuación cargaremos los pasajeros de 5 Omnibus");
+                while (contador != 0)
                 {
-                    Console.WriteLine();
-                    Console.Write($"Omnibus {numVehiculo}: ");
+                    Console.Write($"\nOmnibus {numVehiculo}: ");
                     if (!int.TryParse(Console.ReadLine(), out int num))
                     {
                         Console.WriteLine("El valor ingresado no es un número entero válido.");
                         continue;
                     }
-                    else if (num == 0)
+                    else if (num <= 0)
                     {
                         Console.WriteLine("El número debe ser mayor a cero.");
                         continue;
@@ -101,18 +99,16 @@ namespace EjercicioPooTransporte
             {
                 int contador = 5;
                 int numVehiculo = 1;
-                Console.WriteLine();
-                Console.WriteLine("A continuación cargaremos los pasajeros de 5 Taxis");
+                Console.WriteLine("\nA continuación cargaremos los pasajeros de 5 Taxis");
                 while (contador != 0)
                 {
-                    Console.WriteLine();
-                    Console.Write($"Taxi {numVehiculo}: ");
+                    Console.Write($"\nTaxi {numVehiculo}: ");
                     if (!int.TryParse(Console.ReadLine(), out int num))
                     {
                         Console.WriteLine("El valor ingresado no es un número entero válido.");
                         continue;
                     }
-                    else if (num == 0)
+                    else if (num <= 0)
                     {
                         Console.WriteLine("El número debe ser mayor a cero.");
                         continue;
@@ -124,6 +120,18 @@ namespace EjercicioPooTransporte
                         numVehiculo++;
                     }
                 }
+            }
+
+            void ImprimeOmnibus(List<Omnibus> om)
+            {
+                Console.WriteLine("\nLista de Omnibus: ");
+                om.ForEach(Print);
+            }
+
+            void ImprimeTaxis(List<Taxi> tx)
+            {
+                Console.WriteLine("\nLista de Taxis: ");
+                tx.ForEach(Print);
             }
 
             void Print(TransportePublico tp)
