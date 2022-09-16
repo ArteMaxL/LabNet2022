@@ -4,20 +4,20 @@ using System.Collections.Generic;
 namespace EjercicioPooTransporte
 {
     public class Omnibus : TransportePublico
-    {       
+    {
         public Omnibus(int numero, int pasajeros) : base(numero, pasajeros)
         {
-        }       
+        }
         public override string Avanzar()
         {
             string[] singularPlural = { "pasajero", "pasajeros" };
 
             if (Pasajeros > 1)
             {
-                return $"Omnibus {Numero} avanzando, con {Pasajeros} {singularPlural[1]} a bordo...";
+                return $"Omnibus #{Numero} avanzando, con {Pasajeros} {singularPlural[1]} a bordo...";
             }
-            
-            return $"Omnibus {Numero} avanzando, con {Pasajeros} {singularPlural[0]} a bordo...";
+
+            return $"Omnibus #{Numero} avanzando, con {Pasajeros} {singularPlural[0]} a bordo...";
         }
 
         public override string Detenerse()
@@ -26,16 +26,16 @@ namespace EjercicioPooTransporte
 
             if (Pasajeros > 1)
             {
-                return $"Omnibus {Numero} deteniéndose, con {Pasajeros} {singularPlural[1]} a bordo...";
+                return $"Omnibus #{Numero} deteniéndose, con {Pasajeros} {singularPlural[1]} a bordo...";
             }
-            
-            return $"Omnibus {Numero} deteniéndose, con {Pasajeros} {singularPlural[0]} a bordo...";
-        }
 
+            return $"Omnibus #{Numero} deteniéndose, con {Pasajeros} {singularPlural[0]} a bordo...";
+        }
         public static void CargaCincoOmnibus(List<TransportePublico> omnibuses)
         {
             int contador = 5;
             int numVehiculo = 1;
+            int maxPasajeros = 100;
             Console.WriteLine("\nA continuación cargaremos los pasajeros de 5 Omnibus");
             while (contador != 0)
             {
@@ -50,6 +50,10 @@ namespace EjercicioPooTransporte
                     Console.WriteLine("El número debe ser mayor a cero.");
                     continue;
                 }
+                else if (pasajeros > 100)
+                {
+                    Console.WriteLine($"Excediste la capacidad máxima de {maxPasajeros} pasajeros!");
+                }
                 else
                 {
                     omnibuses.Add(new Omnibus(numVehiculo, pasajeros));
@@ -57,7 +61,7 @@ namespace EjercicioPooTransporte
                     numVehiculo++;
                 }
             }
-        }       
+        }
         public override string ToString()
         {
             string[] singularPlural = { "pasajero", "pasajeros" };
@@ -66,6 +70,6 @@ namespace EjercicioPooTransporte
                 return $"Omnibus #{Numero}, con {Pasajeros} {singularPlural[1]}";
             }
             return $"Omnibus #{Numero}, con {Pasajeros} {singularPlural[0]}";
-        }        
+        }
     }
 }

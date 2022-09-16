@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-
-namespace EjercicioPooTransporte
-{    
+﻿namespace EjercicioPooTransporte
+{
     public abstract class TransportePublico
     {
         public TransportePublico(int numero, int pasajeros)

@@ -1,82 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace EjercicioPooTransporte
 {
     public class Program
-    { 
+    {
         static void Main(string[] args)
         {
-            List<TransportePublico> transportes = new List<TransportePublico>();
+            var app = new App();
+            var carga = app.InicioCarga();
 
-            Console.WriteLine("A continuación cargaremos 10 Transportes Públicos, 5 Omnibus y 5 Taxis\n");
-            Console.WriteLine("Presione 'q' si desea salir.");
-
-            string seleccion = null;
-            bool esValido = false;
-
-            do
+            if (carga.Count > 0)
             {
-                Console.Write("Para comenzar por Omnibus presione 1, para Taxis presione 2: ");
-                seleccion = Console.ReadLine();
-                esValido = seleccion == "1" || seleccion == "2";
-                
-                if (seleccion.ToLower() == "q")
+                app.ImprimeLista(carga);
+
+                Console.WriteLine("\nAhora que tenemos pasajeros avancemos...");
+                Console.WriteLine("Presione cualquier tecla para continuar...\n");
+                Console.ReadKey();
+
+                foreach (TransportePublico item in carga)
                 {
-                    seleccion = "q";
-                    break;
+                    Console.WriteLine($"{item.Avanzar()}\n");
                 }
-                if (!esValido)
+
+                Console.WriteLine("\nHemos llegado!!. Es hora de detenerse...");
+                Console.WriteLine("Presione cualquier tecla para continuar...\n");
+                Console.ReadKey();
+
+                foreach (TransportePublico item in carga)
                 {
-                    Console.WriteLine($"El valor ingresado '{seleccion}' no es una opción válida.\n");
+                    Console.WriteLine($"{item.Detenerse()}\n");
                 }
-            } while (!esValido);
 
-            switch (seleccion)
-            {
-                case "1":
-                    Omnibus.CargaCincoOmnibus(transportes);
-                    Taxi.CargaCincoTaxis(transportes);
-                    
-                    break;
-                case "2":
-                    Taxi.CargaCincoTaxis(transportes);
-                    Omnibus.CargaCincoOmnibus(transportes);
-
-                    break;
-                case "q":
-                    Console.WriteLine("Ha salido del programa.");
-                    break;
-                default:
-                    Console.WriteLine("La opción ingresada no es válida.");
-                    break;
+                app.FinPrograma();
             }
-
-            Console.WriteLine("\nCargaste: ");
-            foreach (TransportePublico transportePublico in transportes)
+            else
             {
-                Console.WriteLine(transportePublico.ToString());
+                app.FinPrograma();
             }
-
-            do { 
-            Console.Write("\nPara avanzar con Omnibus presione 1, para Taxis presione 2: ");
-            seleccion = Console.ReadLine();
-            esValido = seleccion == "1" || seleccion == "2";
-
-            if (seleccion.ToLower() == "q")
-            {
-                seleccion = "q";
-                break;
-            }
-            if (!esValido)
-            {
-                Console.WriteLine($"El valor ingresado '{seleccion}' no es una opción válida.\n");
-            }
-            } while (!esValido);
-
-                Console.WriteLine("\n=========================================");
-            Console.WriteLine("Presione cualquier tecla para terminar...");
-            Console.ReadKey();
         }
     }
 }

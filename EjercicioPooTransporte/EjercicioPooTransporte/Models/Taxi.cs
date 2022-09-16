@@ -37,6 +37,7 @@ namespace EjercicioPooTransporte
         {
             int contador = 5;
             int numVehiculo = 1;
+            int maxPasajeros = 4;
             Console.WriteLine("\nA continuación cargaremos los pasajeros de 5 Taxis");
             while (contador != 0)
             {
@@ -50,6 +51,10 @@ namespace EjercicioPooTransporte
                 {
                     Console.WriteLine("El número debe ser mayor a cero.");
                     continue;
+                }
+                else if (pasajeros > 4)
+                {
+                    Console.WriteLine($"Exediste la capacidad máxima de {maxPasajeros} pasajeros!");
                 }
                 else
                 {
