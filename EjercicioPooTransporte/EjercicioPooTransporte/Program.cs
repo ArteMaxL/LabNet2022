@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 namespace EjercicioPooTransporte
 {
-    internal class Program
-    {
+    public class Program
+    { 
         static void Main(string[] args)
         {
-            List<Omnibus> omnibuses = new List<Omnibus>();
-            List<Taxi> taxis = new List<Taxi>();
+            List<TransportePublico> transportes = new List<TransportePublico>();
 
             Console.WriteLine("A continuación cargaremos 10 Transportes Públicos, 5 Omnibus y 5 Taxis\n");
             Console.WriteLine("Presione 'q' si desea salir.");
@@ -21,36 +20,28 @@ namespace EjercicioPooTransporte
                 Console.Write("Para comenzar por Omnibus presione 1, para Taxis presione 2: ");
                 seleccion = Console.ReadLine();
                 esValido = seleccion == "1" || seleccion == "2";
+                
                 if (seleccion.ToLower() == "q")
                 {
                     seleccion = "q";
                     break;
                 }
-
                 if (!esValido)
                 {
                     Console.WriteLine($"El valor ingresado '{seleccion}' no es una opción válida.\n");
                 }
             } while (!esValido);
 
-
             switch (seleccion)
             {
                 case "1":
-                    CargaCincoOmnibus();
-                    CargaCincoTaxis();
-
-                    ImprimeOmnibus(omnibuses);
-                    ImprimeTaxis(taxis);
-
+                    Omnibus.CargaCincoOmnibus(transportes);
+                    Taxi.CargaCincoTaxis(transportes);
+                    
                     break;
-
                 case "2":
-                    CargaCincoTaxis();
-                    CargaCincoOmnibus();
-
-                    ImprimeTaxis(taxis);
-                    ImprimeOmnibus(omnibuses);
+                    Taxi.CargaCincoTaxis(transportes);
+                    Omnibus.CargaCincoOmnibus(transportes);
 
                     break;
                 case "q":
@@ -61,80 +52,31 @@ namespace EjercicioPooTransporte
                     break;
             }
 
-            Console.WriteLine("\n=========================================");
+            Console.WriteLine("\nCargaste: ");
+            foreach (TransportePublico transportePublico in transportes)
+            {
+                Console.WriteLine(transportePublico.ToString());
+            }
+
+            do { 
+            Console.Write("\nPara avanzar con Omnibus presione 1, para Taxis presione 2: ");
+            seleccion = Console.ReadLine();
+            esValido = seleccion == "1" || seleccion == "2";
+
+            if (seleccion.ToLower() == "q")
+            {
+                seleccion = "q";
+                break;
+            }
+            if (!esValido)
+            {
+                Console.WriteLine($"El valor ingresado '{seleccion}' no es una opción válida.\n");
+            }
+            } while (!esValido);
+
+                Console.WriteLine("\n=========================================");
             Console.WriteLine("Presione cualquier tecla para terminar...");
             Console.ReadKey();
-
-            void CargaCincoOmnibus()
-            {
-                int contador = 5;
-                int numVehiculo = 1;
-                Console.WriteLine("\nA continuación cargaremos los pasajeros de 5 Omnibus");
-                while (contador != 0)
-                {
-                    Console.Write($"\nOmnibus {numVehiculo}: ");
-                    if (!int.TryParse(Console.ReadLine(), out int num))
-                    {
-                        Console.WriteLine("El valor ingresado no es un número entero válido.");
-                        continue;
-                    }
-                    else if (num <= 0)
-                    {
-                        Console.WriteLine("El número debe ser mayor a cero.");
-                        continue;
-                    }
-                    else
-                    {
-                        omnibuses.Add(new Omnibus(num));
-                        contador--;
-                        numVehiculo++;
-                    }
-                }
-            }
-
-            void CargaCincoTaxis()
-            {
-                int contador = 5;
-                int numVehiculo = 1;
-                Console.WriteLine("\nA continuación cargaremos los pasajeros de 5 Taxis");
-                while (contador != 0)
-                {
-                    Console.Write($"\nTaxi {numVehiculo}: ");
-                    if (!int.TryParse(Console.ReadLine(), out int num))
-                    {
-                        Console.WriteLine("El valor ingresado no es un número entero válido.");
-                        continue;
-                    }
-                    else if (num <= 0)
-                    {
-                        Console.WriteLine("El número debe ser mayor a cero.");
-                        continue;
-                    }
-                    else
-                    {
-                        taxis.Add(new Taxi(num));
-                        contador--;
-                        numVehiculo++;
-                    }
-                }
-            }
-
-            void ImprimeOmnibus(List<Omnibus> om)
-            {
-                Console.WriteLine("\nLista de Omnibus: ");
-                om.ForEach(Print);
-            }
-
-            void ImprimeTaxis(List<Taxi> tx)
-            {
-                Console.WriteLine("\nLista de Taxis: ");
-                tx.ForEach(Print);
-            }
-
-            void Print(TransportePublico tp)
-            {
-                Console.WriteLine(tp);
-            }
         }
     }
 }
