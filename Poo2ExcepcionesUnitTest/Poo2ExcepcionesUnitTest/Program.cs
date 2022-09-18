@@ -12,66 +12,166 @@ namespace Poo2ExcepcionesUnitTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\tPractica ExtensionMethods + Exceptions + Unit Test\n");
-            Console.WriteLine("Elija el ejercicio que quiere iniciar (1-4):\n");
-            Console.WriteLine("Ejercicio 1\nEjercicio 2\nEjercicio 3\nEjercicio 4");
-            Console.Write("\nSeleccion: ");
-            var seleccion = Console.ReadLine();
-            double real = 0;
-            int entero = 0;
-
-            switch (seleccion)
+            bool salida = false;
+            while (!salida)
             {
-                case "1":
-                    Console.WriteLine("1 - Division por cero\n");
-                    Console.Write("Ingresa el Dividendo: \n");
-                    seleccion = Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("\tPractica ExtensionMethods + Exceptions + Unit Test\n");
+                Console.WriteLine("Elija el ejercicio que quiere iniciar (1-4):\n");
+                Console.WriteLine("Ejercicio 1\nEjercicio 2\nEjercicio 3\nEjercicio 4");
+                Console.Write("\nSeleccion: ");
+                var seleccion = Console.ReadLine();
+                bool esEntero = true;
 
-                    if (double.TryParse(seleccion, out double resultDouble) && (seleccion.Contains(",") || seleccion.Contains(".")))
-                    {
-                        real = resultDouble;
-                        Console.WriteLine(real.GetType());                        
-                    }
-                    else if (int.TryParse(seleccion, out int resultInt))
-                    {
-                        entero = resultInt;                        
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ingresate un caracter no válido!");
-                    }
+                switch (seleccion)
+                {
+                    case "1":
+                        Console.WriteLine("1 - Division por cero\n");
+                        Console.Write("Ingresa el Dividendo: \n");
+                        seleccion = Console.ReadLine();
 
-                    try
-                    {
-                        Divisiones.Division(entero);
-                        var a = 2.1 / 0;
-                    }
-                    catch (DivideByZeroException dex)
-                    {
-                        var mensaje = MensajeCustom.ExcepcionDivisionPorCero(dex);
-                        MensajeCustom.ImprimeExcepcion(mensaje);
-                    }
+                        char[] seleccionTipo = seleccion.ToCharArray();
 
-                    break; 
-                default:
-                    break;
+                        for (int i = 0; i < seleccionTipo.Length; i++)
+                        {
+                            if (seleccionTipo[i] == '.')
+                            {
+                                esEntero = false;
+                            }
+                            else if (seleccionTipo[i] == ',')
+                            {
+                                esEntero = false;
+                            }
+                        }
+
+                        try
+                        {
+                            if (esEntero)
+                            {
+                                var numero = Convert.ToInt32(seleccion);
+                                Console.WriteLine("\nIngresaste un numero entero!\n");
+                                Divisiones.Division(numero);
+                            }
+                            else
+                            {
+                                var numero = Convert.ToDecimal(seleccion);
+                                Console.WriteLine("\nIngresaste un numero decimal!\n");
+                                var a = Divisiones.Division(numero);
+                                Console.WriteLine(a);
+                            }
+                        }
+                        catch (FormatException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionFormato(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        catch (DivideByZeroException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionDivisionPorCero(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        catch (OverflowException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionOverflow(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        catch (Exception e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionCustom(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        
+                        salida = !Logic.QuiereContinuar();
+                        break;
+
+                    case "2":
+                        Console.WriteLine("2 - Division con dos ingresos\n");
+                        Console.Write("Ingresa el Dividendo: \n");
+                        seleccion = Console.ReadLine();
+                        Console.Write("Ingresa el Divisor: \n");
+                        var seleccion2 = Console.ReadLine();
+
+                        if (seleccion.Contains("."))
+                        {
+                            seleccion = seleccion.Replace(".", ",");
+                        }
+
+                        if (seleccion2.Contains("."))
+                        {
+                            seleccion2 = seleccion2.Replace(".", ",");
+                        }
+
+                        try
+                        {
+                            var numero1 = Convert.ToDecimal(seleccion);
+                            var numero2 = Convert.ToDecimal(seleccion2);
+                            var a = Divisiones.Division(numero1, numero2);
+                            Console.WriteLine($"El resultado de dividir {numero1} / {numero2} es = {a}");                            
+                        }
+                        catch (FormatException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionFormato(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        catch (DivideByZeroException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionDivisionPorCero(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        catch (OverflowException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionOverflow(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+                        catch (Exception e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionCustom(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+
+                        salida = !Logic.QuiereContinuar();
+                        break;
+
+                    case "3":
+                        Console.WriteLine("3 - Dispara Excepcion desde clase Logic\n");
+
+                        try
+                        {
+                            Logic.DisparaExcepcion();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
+
+                        salida = !Logic.QuiereContinuar();
+                        break;
+
+                    case "4":
+                        Console.WriteLine("4 - Dispara Excepcion Custom desde clase Logic\n");
+
+                        try
+                        {
+                            Logic.DisparaExcepcionCustom();
+                        }
+                        catch (CustomException e)
+                        {
+                            var mensaje = MensajeCustom.ExcepcionCustom(e);
+                            MensajeCustom.ImprimeExcepcion(mensaje);
+                        }
+
+                        salida = !Logic.QuiereContinuar();
+                        break;
+
+                    default:
+                        Console.WriteLine("No te conviene hace enojar a Chuck Norris!.");
+                        Thread.Sleep(1500);
+                        Console.Clear();
+                        break;
+                }
+
             }
-
-                
-
-            /*
-            try
-            {
-                Divisiones.Division(10);
-                throw new Exception();
-            }
-            catch (DivideByZeroException dex)
-            {
-                var error = MensajeCustom.ExcepcionDivisionPorCero(dex);
-                MensajeCustom.ImprimeExcepcion(error);
-            }
-            */
-            Console.WriteLine("===========Fin del Programa=============");
+            Console.WriteLine("\n===========Fin del Programa=============");
             Console.WriteLine("Presione cualquier tecla para finalizar.");
             Console.ReadKey();
         }

@@ -9,10 +9,20 @@ namespace Poo2ExcepcionesUnitTest
 {
     public class Logic
     {
-        public static void DisparaExcepcion(Exception ex)
+        public static Exception DisparaExcepcion()
         {
-            Console.WriteLine("Disparada desde la Clase Logic\n");
-            MensajeCustom.ExcepcionCustom(ex);
+            throw new Exception("Disparada desde la Clase Logic\n");
+        }
+        public static Exception DisparaExcepcionCustom()
+        {
+            throw new CustomException("Disparada desde la Clase Logic\n");
+        }
+
+        public static bool QuiereContinuar()
+        {
+            Console.Write("\nDesea ejecutar otro Ejercicio?(S/N): ");
+            var seleccion = Console.ReadLine().ToLower();
+            return (seleccion == "s") ? true : false;
         }
     }
 }

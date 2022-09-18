@@ -25,5 +25,10 @@ namespace Poo2ExcepcionesUnitTest
         {
             return dividendo / divisor;
         }
+        public static decimal Division(decimal dividendo, decimal divisor = 0)
+        {
+            var resultado = Math.Round(dividendo / divisor, 2);
+            return resultado;
+        }
     }
 }
