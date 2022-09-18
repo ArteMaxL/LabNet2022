@@ -1,10 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Poo2ExcepcionesUnitTest
 {
@@ -18,7 +12,7 @@ namespace Poo2ExcepcionesUnitTest
                 Console.Clear();
                 Console.WriteLine("\tPractica ExtensionMethods + Exceptions + Unit Test\n");
                 Console.WriteLine("Elija el ejercicio que quiere iniciar (1-4):\n");
-                Console.WriteLine("Ejercicio 1\nEjercicio 2\nEjercicio 3\nEjercicio 4");
+                Console.WriteLine("1 -Ejercicio 1\n2 -Ejercicio 2\n3 -Ejercicio 3\n4 -Ejercicio 4\n5 -Salir sin conocer a Chuck Norris...");
                 Console.Write("\nSeleccion: ");
                 var seleccion = Console.ReadLine();
                 bool esEntero = true;
@@ -26,7 +20,7 @@ namespace Poo2ExcepcionesUnitTest
                 switch (seleccion)
                 {
                     case "1":
-                        Console.WriteLine("1 - Division por cero\n");
+                        Console.WriteLine("\n\t1 - Division por cero\n");
                         Console.Write("Ingresa el Dividendo: \n");
                         seleccion = Console.ReadLine();
 
@@ -80,12 +74,17 @@ namespace Poo2ExcepcionesUnitTest
                             var mensaje = MensajeCustom.ExcepcionCustom(e);
                             MensajeCustom.ImprimeExcepcion(mensaje);
                         }
+                        finally
+                        {
+                            Console.WriteLine("\n=============Fin del Ejercicio 1=============\n");
+                            Console.WriteLine($"\n{Logic.ChuckNorrisFacts()}\n");
+                        }
                         
                         salida = !Logic.QuiereContinuar();
                         break;
 
                     case "2":
-                        Console.WriteLine("2 - Division con dos ingresos\n");
+                        Console.WriteLine("\n\t2 - Division con dos ingresos\n");
                         Console.Write("Ingresa el Dividendo: \n");
                         seleccion = Console.ReadLine();
                         Console.Write("Ingresa el Divisor: \n");
@@ -128,12 +127,17 @@ namespace Poo2ExcepcionesUnitTest
                             var mensaje = MensajeCustom.ExcepcionCustom(e);
                             MensajeCustom.ImprimeExcepcion(mensaje);
                         }
+                        finally
+                        {
+                            Console.WriteLine("\n=============Fin del Ejercicio 2=============\n");
+                            Console.WriteLine($"\n{Logic.ChuckNorrisFacts()}\n");
+                        }
 
                         salida = !Logic.QuiereContinuar();
                         break;
 
                     case "3":
-                        Console.WriteLine("3 - Dispara Excepcion desde clase Logic\n");
+                        Console.WriteLine("\n\t3 - Dispara Excepcion desde clase Logic\n");
 
                         try
                         {
@@ -143,12 +147,17 @@ namespace Poo2ExcepcionesUnitTest
                         {
                             Console.WriteLine(e);
                         }
+                        finally
+                        {
+                            Console.WriteLine("\n=============Fin del Ejercicio 3=============\n");
+                            Console.WriteLine($"\n{Logic.ChuckNorrisFacts()}\n");
+                        }
 
                         salida = !Logic.QuiereContinuar();
                         break;
 
                     case "4":
-                        Console.WriteLine("4 - Dispara Excepcion Custom desde clase Logic\n");
+                        Console.WriteLine("\n\t4 - Dispara Excepcion Custom desde clase Logic\n");
 
                         try
                         {
@@ -159,13 +168,24 @@ namespace Poo2ExcepcionesUnitTest
                             var mensaje = MensajeCustom.ExcepcionCustom(e);
                             MensajeCustom.ImprimeExcepcion(mensaje);
                         }
+                        finally
+                        {
+                            Console.WriteLine("\n=============Fin del Ejercicio 4=============\n");
+                            Console.WriteLine($"\n{Logic.ChuckNorrisFacts()}\n");
+                        }
 
                         salida = !Logic.QuiereContinuar();
                         break;
 
+                    case "5":
+                        salida = true;
+                        break;
+
                     default:
                         Console.WriteLine("No te conviene hace enojar a Chuck Norris!.");
-                        Thread.Sleep(1500);
+                        Console.WriteLine($"\n{Logic.ChuckNorrisFacts()}\n");
+                        Console.WriteLine($"\nPresione cualquier tecla para continuar...\n");
+                        Console.ReadKey();
                         Console.Clear();
                         break;
                 }
