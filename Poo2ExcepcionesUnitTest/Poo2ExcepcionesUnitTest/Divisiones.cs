@@ -11,7 +11,7 @@ namespace Poo2ExcepcionesUnitTest
         public int Divisor { get; private set; }
 
         /// <summary>
-        /// Recibe un entero como dividendo y opcionalmente recibe un divisor.
+        /// Recibe un entero como dividendo y si no recibe el divisor asigna un cero por defecto.
         /// El valor por defecto del divisor es cero para que lance una excepcion.
         /// </summary>
         /// <param name="dividendo"></param>
@@ -21,6 +21,14 @@ namespace Poo2ExcepcionesUnitTest
         {
             return dividendo / divisor;
         }
+
+        /// <summary>
+        /// Recibe un decimal como dividendo y si no recibe el divisor asigna un cero por defecto.
+        /// El valor por defecto del divisor es cero para que lance una excepcion.
+        /// </summary>
+        /// <param name="dividendo"></param>
+        /// <param name="divisor"></param>
+        /// <returns></returns>
         public static decimal Division(decimal dividendo, decimal divisor = 0)
         {
             var resultado = Math.Round(dividendo / divisor, 2);

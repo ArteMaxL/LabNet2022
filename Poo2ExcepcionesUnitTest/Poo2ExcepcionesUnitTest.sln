@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poo2ExcepcionesUnitTest", "Poo2ExcepcionesUnitTest\Poo2ExcepcionesUnitTest.csproj", "{1E117D3D-0884-4399-83DD-4AEE466FC437}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poo2ExcepcionesUnitTestTests", "Poo2ExcepcionesUnitTestTests\Poo2ExcepcionesUnitTestTests.csproj", "{7EEEDB96-ED64-467C-B114-79D1568AC80E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E117D3D-0884-4399-83DD-4AEE466FC437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E117D3D-0884-4399-83DD-4AEE466FC437}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E117D3D-0884-4399-83DD-4AEE466FC437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEEDB96-ED64-467C-B114-79D1568AC80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEEDB96-ED64-467C-B114-79D1568AC80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEEDB96-ED64-467C-B114-79D1568AC80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEEDB96-ED64-467C-B114-79D1568AC80E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
