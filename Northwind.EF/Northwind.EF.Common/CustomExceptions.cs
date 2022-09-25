@@ -34,5 +34,12 @@ namespace Northwind.EF.Common
             List<String> result = new List<String>() { customMessage, e.Message };
             return result;
         }
+
+        public static List<String> CustomInvalidOperationException(InvalidOperationException e)
+        {
+            var customMessage = $"Exception type: {e.GetType()}";
+            List<String> result = new List<String>() { customMessage, e.Message };
+            return result;
+        }
     }
 }

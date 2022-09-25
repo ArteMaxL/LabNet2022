@@ -27,12 +27,28 @@ namespace Northwind.EF.Common
             }
         }
 
-        public bool CategoryLong(string input, int limit = 15)
+        public bool IsValidString(string input)
+        {
+            if (input != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool NameLong(string input, int limit = 15)
         {
             int count = input.Length;
             
             if (count <= limit) return true;
             else return false;
+        }
+
+        public string GenerateStringID(int length = 4)
+        {
+            System.Guid guid = System.Guid.NewGuid();
+            string ID = guid.ToString().Substring(0, length);
+
+            return "Z" + ID;
         }
     }
 }
