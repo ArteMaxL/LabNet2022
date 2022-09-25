@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Northwind.EF.UI
@@ -19,11 +20,12 @@ namespace Northwind.EF.UI
         private static void Start()
         {
             while (true)
-            { // Categories - Customers - Shippers
+            {
                 Console.Clear();
                 Console.WriteLine("\t====Main Menu====\n");
                 Console.WriteLine("1 - Categories.");
-                Console.WriteLine("2 - Employees.");
+                Console.WriteLine("2 - Customers.");
+                Console.WriteLine("3 - Shippers.");
                 Console.WriteLine("0 - Exit.");
 
                 var choice = Console.ReadLine();
@@ -35,9 +37,14 @@ namespace Northwind.EF.UI
                         CategoriesMenu();
                         break;
                     case "2":
-                        EmployeesMenu();
+                        CustomersMenu();
+                        break;
+                    case "3":
+                        ShippersMenu();
                         break;
                     case "0":
+                        Console.WriteLine("\n===========End Program=============");
+                        Thread.Sleep(1500);
                         Environment.Exit(0);
                         break;
                     default:
@@ -52,7 +59,7 @@ namespace Northwind.EF.UI
             {
                 Console.Clear();
                 Console.WriteLine("\t====Categories====\n");
-                Console.WriteLine("1 - Add.");
+                Console.WriteLine("1 - Add New.");
                 Console.WriteLine("2 - Update (Name, Description).");
                 Console.WriteLine("3 - Delete (ID).");
                 Console.WriteLine("4 - List.");
@@ -85,31 +92,73 @@ namespace Northwind.EF.UI
             }
         }
 
-        private static void EmployeesMenu()
+        private static void CustomersMenu()
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("1* Add.");
-                Console.WriteLine("2* Update (First name).");
-                Console.WriteLine("3* Delete.");
-                Console.WriteLine("4* List.");
-                Console.WriteLine("0* Back to Main Menu.");
+                Console.WriteLine("\t====Customers====\n");
+                Console.WriteLine("1 - Add New.");
+                Console.WriteLine("2 - Update (Company Name, Contact Name).");
+                Console.WriteLine("3 - Delete (ID).");
+                Console.WriteLine("4 - List.");
+                Console.WriteLine("0 - Back to Main Menu.");
+
                 var choice = Console.ReadLine();
                 Console.Clear();
+
+                var UI = new CustomerUI();
                 switch (choice)
                 {
                     case "1":
-                        // Add();
+                        UI.Add();
                         break;
                     case "2":
-                        // Update();
+                        UI.Update();
                         break;
                     case "3":
-                        // Delete();
+                        UI.Delete();
                         break;
                     case "4":
-                        // GetList();
+                        UI.List();
+                        break;
+                    case "0":
+                        Start();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        private static void ShippersMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("\t====Shippers====\n");
+                Console.WriteLine("1 - Add New.");
+                Console.WriteLine("2 - Update (Company Name, Phone).");
+                Console.WriteLine("3 - Delete (ID).");
+                Console.WriteLine("4 - List.");
+                Console.WriteLine("0 - Back to Main Menu.");
+
+                var choice = Console.ReadLine();
+                Console.Clear();
+
+                var UI = new CategoryUI();
+                switch (choice)
+                {
+                    case "1":
+                        UI.Add();
+                        break;
+                    case "2":
+                        UI.Update();
+                        break;
+                    case "3":
+                        UI.Delete();
+                        break;
+                    case "4":
+                        UI.List();
                         break;
                     case "0":
                         Start();
