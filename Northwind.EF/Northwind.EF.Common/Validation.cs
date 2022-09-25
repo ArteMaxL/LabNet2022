@@ -27,9 +27,8 @@ namespace Northwind.EF.Common
             }
         }
 
-        public bool CategoryLong(string input)
+        public bool CategoryLong(string input, int limit = 15)
         {
-            int limit = 15;
             int count = input.Length;
             
             if (count <= limit) return true;
