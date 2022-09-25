@@ -43,7 +43,7 @@ namespace Northwind.EF.UI
             {
                 Console.WriteLine("\nEnter a Category Name (max 15 characters):\n");
                 input = Console.ReadLine();
-                if (valid.NameLong(input))
+                if (valid.NameLong(input, 15))
                 {
                     inputName = input;
                     exit = true;
@@ -74,11 +74,14 @@ namespace Northwind.EF.UI
             }             
             catch (Exception e)
             {
+                Console.Clear();
                 var message = CustomExceptions.CustomException(e);
                 foreach (var item in message)
                 {
                     Console.WriteLine($"{item}\n");
                 }
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
             Console.Clear();
             List();
@@ -117,11 +120,14 @@ namespace Northwind.EF.UI
                 }
                 catch (Exception e)
                 {
+                    Console.Clear();
                     var message = CustomExceptions.CustomException(e);
                     foreach (var item in message)
                     {
                         Console.WriteLine($"{item}\n");
                     }
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                 }
             }
             else
@@ -163,7 +169,7 @@ namespace Northwind.EF.UI
                 {
                     Console.WriteLine("\nEnter a Category Name (max 15 characters):\n");
                     input = Console.ReadLine();
-                    if (valid.NameLong(input))
+                    if (valid.NameLong(input, 15))
                     {
                         inputName = input;
                         exit = true;
@@ -188,11 +194,14 @@ namespace Northwind.EF.UI
                 }
                 catch (Exception e)
                 {
+                    Console.Clear();
                     var message = CustomExceptions.CustomException(e);
                     foreach (var item in message)
                     {
                         Console.WriteLine($"{item}\n");
                     }
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                 }
             }
             else

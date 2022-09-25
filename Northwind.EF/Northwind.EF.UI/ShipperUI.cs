@@ -55,8 +55,24 @@ namespace Northwind.EF.UI
                 }
                 Console.Clear();
             }
-            Console.WriteLine("\nEnter a Company Phone:\n");
-            phone = Console.ReadLine();
+
+            exit = false;
+            while (!exit)
+            {
+                Console.WriteLine("\nEnter a Company Phone (max 24 characters):\n");
+                input = Console.ReadLine();
+                if (valid.NameLong(input, 24))
+                {
+                    phone = input;
+                    exit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Phone number too long!.");
+                    Thread.Sleep(1500);
+                }
+                Console.Clear();
+            }
 
             try
             {
@@ -74,11 +90,14 @@ namespace Northwind.EF.UI
             }
             catch (Exception e)
             {
+                Console.Clear();
                 var message = CustomExceptions.CustomException(e);
                 foreach (var item in message)
                 {
                     Console.WriteLine($"{item}\n");
                 }
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
             Console.Clear();
             List();
@@ -118,11 +137,14 @@ namespace Northwind.EF.UI
                 }
                 catch (Exception e)
                 {
+                    Console.Clear();
                     var message = CustomExceptions.CustomException(e);
                     foreach (var item in message)
                     {
                         Console.WriteLine($"{item}\n");
                     }
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                 }
             }
             else
@@ -176,8 +198,25 @@ namespace Northwind.EF.UI
                     }
                     Console.Clear();
                 }
-                Console.WriteLine("\nEnter a Company Phone:\n");
-                phone = Console.ReadLine();
+
+                exit = false;
+                while (!exit)
+                {
+                    Console.WriteLine("\nEnter a Company Phone (max 24 characters):\n");
+                    input = Console.ReadLine();
+                    if (valid.NameLong(input, 24))
+                    {
+                        phone = input;
+                        exit = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Phone number too long!.");
+                        Thread.Sleep(1500);
+                    }
+                    Console.Clear();
+                }
+
                 try
                 {
                     shipperLogic.Update(new Shippers
@@ -189,11 +228,14 @@ namespace Northwind.EF.UI
                 }
                 catch (Exception e)
                 {
+                    Console.Clear();
                     var message = CustomExceptions.CustomException(e);
                     foreach (var item in message)
                     {
                         Console.WriteLine($"{item}\n");
                     }
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                 }
             }
             else

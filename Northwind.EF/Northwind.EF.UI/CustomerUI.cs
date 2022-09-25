@@ -20,7 +20,7 @@ namespace Northwind.EF.UI
 
             foreach (Customers customer in customers)
             {
-                Console.WriteLine($"ID: {customer.CustomerID}\tCategory Name: {customer.CompanyName}");
+                Console.WriteLine($"ID: {customer.CustomerID}\tCustomer Company Name: {customer.CompanyName}");
                 Console.WriteLine($"Customer Contact Name: {customer.ContactName}");
                 Console.WriteLine("-------------------------------------------------");
             }
@@ -90,11 +90,14 @@ namespace Northwind.EF.UI
             }
             catch (Exception e)
             {
+                Console.Clear();
                 var message = CustomExceptions.CustomException(e);
                 foreach (var item in message)
                 {
                     Console.WriteLine($"{item}\n");
-                }
+                }                
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
             Console.Clear();
             List();
@@ -153,11 +156,14 @@ namespace Northwind.EF.UI
             }
             catch (Exception e)
             {
+                Console.Clear();
                 var message = CustomExceptions.CustomException(e);
                 foreach (var item in message)
                 {
                     Console.WriteLine($"{item}\n");
                 }
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }            
             Console.Clear();
             List();
@@ -205,8 +211,25 @@ namespace Northwind.EF.UI
                         }
                         Console.Clear();
                     }
-                    Console.WriteLine("\nEnter a Contact Name:\n");
-                    contactName = Console.ReadLine();
+
+                    exit = false;
+                    while (!exit)
+                    {
+                        Console.WriteLine("\nEnter a Customer Contact Name (max 30 characters):\n");
+                        input = Console.ReadLine();
+                        if (valid.NameLong(input, 30))
+                        {
+                            contactName = input;
+                            exit = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Name too long!.");
+                            Thread.Sleep(1500);
+                        }
+                        Console.Clear();
+                    }
+
                     try
                     {
                         customerLogic.Update(new Customers
@@ -218,11 +241,14 @@ namespace Northwind.EF.UI
                     }
                     catch (Exception e)
                     {
+                        Console.Clear();
                         var message = CustomExceptions.CustomException(e);
                         foreach (var item in message)
                         {
                             Console.WriteLine($"{item}\n");
                         }
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
                     }
                 }
                 else
