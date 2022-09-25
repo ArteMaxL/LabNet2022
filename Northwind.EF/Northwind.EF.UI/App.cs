@@ -112,12 +112,20 @@ namespace Northwind.EF.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\t====Customers====\n");
-                Console.WriteLine("1 - Add New.");
-                Console.WriteLine("2 - Update (Company Name, Contact Name).");
-                Console.WriteLine("3 - Delete (ID).");
-                Console.WriteLine("4 - List.");
-                Console.WriteLine("0 - Back to Main Menu.");
+                Console.WriteLine("╔═════════════════════════════════════════╗");
+                Console.WriteLine("║================Customers================║");
+                Console.WriteLine("╠═════════════════════════════════════════╣");
+                Console.WriteLine("║ 1 - Add New.                            ║");
+                Console.WriteLine("╠═════════════════════════════════════════╣");
+                Console.WriteLine("║ 2 - Update (Company Name, Contact Name).║");
+                Console.WriteLine("╠═════════════════════════════════════════╣");
+                Console.WriteLine("║ 3 - Delete (ID).                        ║");
+                Console.WriteLine("╠═════════════════════════════════════════╣");
+                Console.WriteLine("║ 4 - List.                               ║");
+                Console.WriteLine("╠═════════════════════════════════════════╣");
+                Console.WriteLine("║ 0 - Back to Main Menu.                  ║");
+                Console.WriteLine("╚═════════════════════════════════════════╝");
+                Console.Write("\nChoice: ");
 
                 var choice = Console.ReadLine();
                 Console.Clear();
@@ -150,12 +158,20 @@ namespace Northwind.EF.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\t====Shippers====\n");
-                Console.WriteLine("1 - Add New.");
-                Console.WriteLine("2 - Update (Company Name, Phone).");
-                Console.WriteLine("3 - Delete (ID).");
-                Console.WriteLine("4 - List.");
-                Console.WriteLine("0 - Back to Main Menu.");
+                Console.WriteLine("╔══════════════════════════════════╗");
+                Console.WriteLine("║=============Shippers=============║");
+                Console.WriteLine("╠══════════════════════════════════╣");
+                Console.WriteLine("║ 1 - Add New.                     ║");
+                Console.WriteLine("╠══════════════════════════════════╣");
+                Console.WriteLine("║ 2 - Update (Company Name, Phone).║");
+                Console.WriteLine("╠══════════════════════════════════╣");
+                Console.WriteLine("║ 3 - Delete (ID).                 ║");
+                Console.WriteLine("╠══════════════════════════════════╣");
+                Console.WriteLine("║ 4 - List.                        ║");
+                Console.WriteLine("╠══════════════════════════════════╣");
+                Console.WriteLine("║ 0 - Back to Main Menu.           ║");
+                Console.WriteLine("╚══════════════════════════════════╝");
+                Console.Write("\nChoice: ");
 
                 var choice = Console.ReadLine();
                 Console.Clear();
