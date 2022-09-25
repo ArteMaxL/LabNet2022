@@ -33,7 +33,7 @@ namespace Northwind.EF.UI
             CustomerLogic customerLogic = new CustomerLogic();
             var valid = new Validation();
             var customers = customerLogic.GetAll();
-            string quantity = null;
+            string ID = valid.GenerateStringID();
             string input = null;
             string companyName = null;
             string contactName = null;
@@ -43,7 +43,7 @@ namespace Northwind.EF.UI
             {
                 Console.WriteLine("\nEnter a Customer Company Name (max 40 characters):\n");
                 input = Console.ReadLine();
-                if (valid.CategoryLong(input, 40))
+                if (valid.NameLong(input, 40))
                 {
                     companyName = input;
                     exit = true;
@@ -61,7 +61,7 @@ namespace Northwind.EF.UI
             {
                 Console.WriteLine("\nEnter a Customer Contact Name (max 30 characters):\n");
                 input = Console.ReadLine();
-                if (valid.CategoryLong(input, 30))
+                if (valid.NameLong(input, 30))
                 {
                     contactName = input;
                     exit = true;
@@ -76,10 +76,9 @@ namespace Northwind.EF.UI
 
             try
             {
-                quantity = companyName.Substring(0, 5).ToUpper();
                 customerLogic.Add(new Customers
                 {
-                    CustomerID = quantity,
+                    CustomerID = ID,
                     CompanyName = companyName,
                     ContactName = contactName,
                 });
@@ -101,9 +100,9 @@ namespace Northwind.EF.UI
             List();
         }
 
-        public override void Delete() //TODO
+        public override void Delete()
         {
-            CategoryLogic categoryLogic = new CategoryLogic();
+            CustomerLogic customerLogic = new CustomerLogic();
             var valid = new Validation();
             string input = null;
 
@@ -112,110 +111,136 @@ namespace Northwind.EF.UI
             {
                 Console.WriteLine("\nEnter a number ID:\n");
                 input = Console.ReadLine();
-                if (valid.IsValid(input))
+                if (valid.IsValidString(input))
                 {
-                    exit = valid.IsValid(input);
+                    exit = valid.IsValidString(input);
                 }
                 Console.Clear();
             }
-            var id = Int32.Parse(input);
-            var categoryDelete = categoryLogic.GetOne(id);
-
-            if (categoryDelete != null)
+            var id = input;
+            try
             {
-                try
+                var customerDelete = customerLogic.GetOneString(id);
+
+                if (customerDelete != null)
                 {
-                    categoryLogic.Delete(categoryDelete.CategoryID);
-                    Console.WriteLine("Category to be deleted:\n");
-                    Console.WriteLine($"ID: {categoryDelete.CategoryID}\tCategory Name: {categoryDelete.CategoryName}");
-                    Console.WriteLine($"Category Description: {categoryDelete.Description}");
+                    customerLogic.DeleteByString(customerDelete.CustomerID);
+                    Console.WriteLine("Customer to be deleted:\n");
+                    Console.WriteLine($"ID: {customerDelete.CustomerID}\tCompany Name: {customerDelete.CompanyName}");
+                    Console.WriteLine($"Company Contact Name: {customerDelete.ContactName}");
                     Console.WriteLine("Press any key to continue...");
                     Console.WriteLine("\n======================\n");
                     Console.ReadKey();
                 }
-                catch (Exception e)
+                else
                 {
-                    var message = CustomExceptions.CustomException(e);
-                    foreach (var item in message)
-                    {
-                        Console.WriteLine($"{item}\n");
-                    }
+                    Console.WriteLine($"Company with ID: {id} not found!");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                 }
             }
-            else
+            catch (InvalidOperationException e)
             {
-                Console.WriteLine($"Category with ID: {id} not found!");
+                Console.Clear();
+                var message = CustomExceptions.CustomInvalidOperationException(e);
+                foreach (var item in message)
+                {                    
+                    Console.WriteLine($"{item}\n");                    
+                }
+                Console.WriteLine($"\nCompany with ID: {id} not found!\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
+            catch (Exception e)
+            {
+                var message = CustomExceptions.CustomException(e);
+                foreach (var item in message)
+                {
+                    Console.WriteLine($"{item}\n");
+                }
+            }            
             Console.Clear();
             List();
         }
 
         public override void Update()
         {
-            CategoryLogic categoryLogic = new CategoryLogic();
+            CustomerLogic customerLogic = new CustomerLogic();
             var valid = new Validation();
             string input = null;
-            string inputName = null;
-            string description = null;
+            string companyName = null;
+            string contactName = null;
 
             bool exit = false;
             while (!exit)
             {
                 Console.WriteLine("\nEnter a number ID:\n");
                 input = Console.ReadLine();
-                if (valid.IsValid(input))
+                if (valid.IsValidString(input))
                 {
-                    exit = valid.IsValid(input);
+                    exit = valid.IsValidString(input);
                 }
                 Console.Clear();
             }
-            var id = Int32.Parse(input);
-            var categoryUpdate = categoryLogic.GetOne(id);
-
-            if (categoryUpdate != null)
+            var id = input;
+            try
             {
-                exit = false;
-                while (!exit)
+                var customerUpdate = customerLogic.GetOneString(id);
+                if (customerUpdate != null)
                 {
-                    Console.WriteLine("\nEnter a Category Name (max 15 characters):\n");
-                    input = Console.ReadLine();
-                    if (valid.CategoryLong(input))
+                    exit = false;
+                    while (!exit)
                     {
-                        inputName = input;
-                        exit = true;
+                        Console.WriteLine("\nEnter a Company Name (max 40 characters):\n");
+                        input = Console.ReadLine();
+                        if (valid.NameLong(input, 40))
+                        {
+                            companyName = input;
+                            exit = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Name too long!.");
+                            Thread.Sleep(1500);
+                        }
+                        Console.Clear();
                     }
-                    else
+                    Console.WriteLine("\nEnter a Contact Name:\n");
+                    contactName = Console.ReadLine();
+                    try
                     {
-                        Console.WriteLine("Name too long!.");
-                        Thread.Sleep(1500);
+                        customerLogic.Update(new Customers
+                        {
+                            CustomerID = customerUpdate.CustomerID,
+                            CompanyName = companyName,
+                            ContactName = contactName,
+                        });
                     }
-                    Console.Clear();
+                    catch (Exception e)
+                    {
+                        var message = CustomExceptions.CustomException(e);
+                        foreach (var item in message)
+                        {
+                            Console.WriteLine($"{item}\n");
+                        }
+                    }
                 }
-                Console.WriteLine("\nEnter a Category Description:\n");
-                description = Console.ReadLine();
-                try
+                else
                 {
-                    categoryLogic.Update(new Categories
-                    {
-                        CategoryID = categoryUpdate.CategoryID,
-                        CategoryName = inputName,
-                        Description = description,
-                    });
-                }
-                catch (Exception e)
-                {
-                    var message = CustomExceptions.CustomException(e);
-                    foreach (var item in message)
-                    {
-                        Console.WriteLine($"{item}\n");
-                    }
+                    Console.WriteLine($"Category with ID: '{id}' not found!");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
                 }
             }
-            else
+            catch (InvalidOperationException e)
             {
-                Console.WriteLine($"Category with ID: {id} not found!");
+                Console.Clear();
+                var message = CustomExceptions.CustomInvalidOperationException(e);
+                foreach (var item in message)
+                {
+                    Console.WriteLine($"{item}\n");
+                }
+                Console.WriteLine($"\nCompany with ID: '{id}' not found!\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }

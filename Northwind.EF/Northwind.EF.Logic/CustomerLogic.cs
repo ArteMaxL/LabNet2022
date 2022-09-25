@@ -23,6 +23,14 @@ namespace Northwind.EF.Logic
             _context.SaveChanges();
         }
 
+        public void DeleteByString(string id)
+        {
+            var customer = _context.Customers.Single(c => c.CustomerID == id);
+            _context.Customers.Remove(customer);
+
+            _context.SaveChanges();
+        }
+
         public override List<Customers> GetAll()
         {
             return _context.Customers.ToList();
@@ -31,6 +39,12 @@ namespace Northwind.EF.Logic
         public override Customers GetOne(int id)
         {
             return _context.Customers.Find(id);
+        }
+
+        public Customers GetOneString(string id)
+        {
+            var customer = _context.Customers.Single(c => c.CustomerID == id);
+            return customer;
         }
 
         public override void Update(Customers customerNew)

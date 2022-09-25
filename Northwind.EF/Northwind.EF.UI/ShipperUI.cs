@@ -3,7 +3,6 @@ using Northwind.EF.Entities;
 using Northwind.EF.Logic;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,17 +10,18 @@ using System.Threading.Tasks;
 
 namespace Northwind.EF.UI
 {
-    public class CategoryUI : UIBase
+    internal class ShipperUI : UIBase
     {
+
         public override void List()
         {
-            CategoryLogic categoryLogic = new CategoryLogic();
-            var categories = categoryLogic.GetAll();
+            ShipperLogic shipperLogic = new ShipperLogic();
+            var shippers = shipperLogic.GetAll();
 
-            foreach (Categories category in categories)
+            foreach (Shippers shipper in shippers)
             {
-                Console.WriteLine($"ID: {category.CategoryID}\tCategory Name: {category.CategoryName}");
-                Console.WriteLine($"Category Description: {category.Description}");
+                Console.WriteLine($"ID: {shipper.ShipperID}\tCompany Name: {shipper.CompanyName}");
+                Console.WriteLine($"Company Phone: {shipper.Phone}");
                 Console.WriteLine("-------------------------------------------------");
             }
             Console.WriteLine($"{System.Environment.NewLine}===Press any key to continue===");
@@ -30,20 +30,20 @@ namespace Northwind.EF.UI
 
         public override void Add()
         {
-            CategoryLogic categoryLogic = new CategoryLogic();
+            ShipperLogic shipperLogic = new ShipperLogic();
             var valid = new Validation();
-            var categories = categoryLogic.GetAll();
-            int quantity = categories.Count() + 1;
+            var shippers = shipperLogic.GetAll();
+            int quantity = shippers.Count() + 1;
             string input = null;
             string inputName = null;
-            string description = null;
+            string phone = null;
 
             bool exit = false;
             while (!exit)
             {
-                Console.WriteLine("\nEnter a Category Name (max 15 characters):\n");
+                Console.WriteLine("\nEnter a Company Name (max 40 characters):\n");
                 input = Console.ReadLine();
-                if (valid.NameLong(input))
+                if (valid.NameLong(input, 40))
                 {
                     inputName = input;
                     exit = true;
@@ -55,23 +55,23 @@ namespace Northwind.EF.UI
                 }
                 Console.Clear();
             }
-            Console.WriteLine("\nEnter a Category Description:\n");
-            description = Console.ReadLine();
+            Console.WriteLine("\nEnter a Company Phone:\n");
+            phone = Console.ReadLine();
 
             try
             {
-                categoryLogic.Add(new Categories
+                shipperLogic.Add(new Shippers
                 {
-                    CategoryID = quantity,
-                    CategoryName = inputName,
-                    Description = description,
+                    ShipperID = quantity,
+                    CompanyName = inputName,
+                    Phone = phone,
                 });
 
-                Console.WriteLine("Category added!\n"); 
+                Console.WriteLine("Shipper added!\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.WriteLine("\n======================\n");
                 Console.ReadKey();
-            }             
+            }
             catch (Exception e)
             {
                 var message = CustomExceptions.CustomException(e);
@@ -86,10 +86,10 @@ namespace Northwind.EF.UI
 
         public override void Delete()
         {
-            CategoryLogic categoryLogic = new CategoryLogic();            
+            ShipperLogic shipperLogic = new ShipperLogic();
             var valid = new Validation();
             string input = null;
-            
+
             bool exit = false;
             while (!exit)
             {
@@ -102,15 +102,16 @@ namespace Northwind.EF.UI
                 Console.Clear();
             }
             var id = Int32.Parse(input);
-            var categoryDelete = categoryLogic.GetOne(id);
+            var shipperDelete = shipperLogic.GetOne(id);
 
-            if (categoryDelete != null) {
+            if (shipperDelete != null)
+            {
                 try
                 {
-                    categoryLogic.Delete(categoryDelete.CategoryID);                    
-                    Console.WriteLine("Category to be deleted:\n");
-                    Console.WriteLine($"ID: {categoryDelete.CategoryID}\tCategory Name: {categoryDelete.CategoryName}");
-                    Console.WriteLine($"Category Description: {categoryDelete.Description}");
+                    shipperLogic.Delete(shipperDelete.ShipperID);
+                    Console.WriteLine("Shipper to be deleted:\n");
+                    Console.WriteLine($"ID: {shipperDelete.ShipperID}\tCompany Name: {shipperDelete.CompanyName}");
+                    Console.WriteLine($"Company Phone: {shipperDelete.Phone}");
                     Console.WriteLine("Press any key to continue...");
                     Console.WriteLine("\n======================\n");
                     Console.ReadKey();
@@ -126,9 +127,9 @@ namespace Northwind.EF.UI
             }
             else
             {
-                Console.WriteLine($"Category with ID: {id} not found!" );
+                Console.WriteLine($"Shipper with ID: {id} not found!");
                 Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();                
+                Console.ReadKey();
             }
             Console.Clear();
             List();
@@ -136,11 +137,11 @@ namespace Northwind.EF.UI
 
         public override void Update()
         {
-            CategoryLogic categoryLogic = new CategoryLogic();
+            ShipperLogic shipperLogic = new ShipperLogic();
             var valid = new Validation();
             string input = null;
             string inputName = null;
-            string description = null;
+            string phone = null;
 
             bool exit = false;
             while (!exit)
@@ -154,16 +155,16 @@ namespace Northwind.EF.UI
                 Console.Clear();
             }
             var id = Int32.Parse(input);
-            var categoryUpdate = categoryLogic.GetOne(id);
-            
-            if (categoryUpdate != null)
+            var shipperUpdate = shipperLogic.GetOne(id);
+
+            if (shipperUpdate != null)
             {
                 exit = false;
                 while (!exit)
                 {
-                    Console.WriteLine("\nEnter a Category Name (max 15 characters):\n");
+                    Console.WriteLine("\nEnter a Company Name (max 40 characters):\n");
                     input = Console.ReadLine();
-                    if (valid.NameLong(input))
+                    if (valid.NameLong(input, 40))
                     {
                         inputName = input;
                         exit = true;
@@ -175,15 +176,15 @@ namespace Northwind.EF.UI
                     }
                     Console.Clear();
                 }
-                Console.WriteLine("\nEnter a Category Description:\n");
-                description = Console.ReadLine();
+                Console.WriteLine("\nEnter a Company Phone:\n");
+                phone = Console.ReadLine();
                 try
                 {
-                    categoryLogic.Update(new Categories
+                    shipperLogic.Update(new Shippers
                     {
-                        CategoryID = categoryUpdate.CategoryID,
-                        CategoryName = inputName,
-                        Description = description,                
+                        ShipperID = shipperUpdate.ShipperID,
+                        CompanyName = inputName,
+                        Phone = phone,
                     });
                 }
                 catch (Exception e)
@@ -197,7 +198,7 @@ namespace Northwind.EF.UI
             }
             else
             {
-                Console.WriteLine($"Category with ID: {id} not found!");
+                Console.WriteLine($"Shipper with ID: {id} not found!");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }

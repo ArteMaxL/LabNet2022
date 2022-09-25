@@ -22,11 +22,18 @@ namespace Northwind.EF.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\t====Main Menu====\n");
-                Console.WriteLine("1 - Categories.");
-                Console.WriteLine("2 - Customers.");
-                Console.WriteLine("3 - Shippers.");
-                Console.WriteLine("0 - Exit.");
+                Console.WriteLine("╔═══════════════════════╗");
+                Console.WriteLine("║=======Main Menu=======║");
+                Console.WriteLine("╠═══════════════════════╣");
+                Console.WriteLine("║ 1 - Categories.       ║");
+                Console.WriteLine("╠═══════════════════════╣");
+                Console.WriteLine("║ 2 - Customers.        ║");
+                Console.WriteLine("╠═══════════════════════╣");
+                Console.WriteLine("║ 3 - Shippers.         ║");
+                Console.WriteLine("╠═══════════════════════╣");
+                Console.WriteLine("║ 0 - Exit.             ║");
+                Console.WriteLine("╚═══════════════════════╝");
+                Console.Write("\nChoice: ");
 
                 var choice = Console.ReadLine();
                 Console.Clear();
@@ -145,7 +152,7 @@ namespace Northwind.EF.UI
                 var choice = Console.ReadLine();
                 Console.Clear();
 
-                var UI = new CategoryUI();
+                var UI = new ShipperUI();
                 switch (choice)
                 {
                     case "1":
