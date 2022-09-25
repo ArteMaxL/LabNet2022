@@ -65,12 +65,20 @@ namespace Northwind.EF.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\t====Categories====\n");
-                Console.WriteLine("1 - Add New.");
-                Console.WriteLine("2 - Update (Name, Description).");
-                Console.WriteLine("3 - Delete (ID).");
-                Console.WriteLine("4 - List.");
-                Console.WriteLine("0 - Back to Main Menu.");
+                Console.WriteLine("╔════════════════════════════════╗");
+                Console.WriteLine("║===========Categories===========║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 1 - Add New.                   ║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 2 - Update (Name, Description).║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 3 - Delete (ID).               ║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 4 - List.                      ║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 0 - Back to Main Menu.         ║");
+                Console.WriteLine("╚════════════════════════════════╝");
+                Console.Write("\nChoice: ");
 
                 var choice = Console.ReadLine();
                 Console.Clear();
@@ -99,7 +107,7 @@ namespace Northwind.EF.UI
             }
         }
 
-        private static void CustomersMenu()
+        private static void CustomersMenu() // TODO
         {
             while (true)
             {
