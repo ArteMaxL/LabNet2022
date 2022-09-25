@@ -48,11 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseLogic.cs" />
+    <Compile Include="CategoryLogic.cs" />
+    <Compile Include="CustomerLogic.cs" />
+    <Compile Include="ICRUDLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipperLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind.EF.Data\Northwind.EF.Data.csproj">
+      <Project>{cf9f4a42-eb34-4b73-8004-e352e314c59d}</Project>
+      <Name>Northwind.EF.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.EF.Entities\Northwind.EF.Entities.csproj">
+      <Project>{2e7de206-4cd5-460a-95a8-3414779ec59c}</Project>
+      <Name>Northwind.EF.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
