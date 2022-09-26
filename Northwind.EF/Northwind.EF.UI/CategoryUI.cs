@@ -118,6 +118,17 @@ namespace Northwind.EF.UI
                     Console.WriteLine("\n======================\n");
                     Console.ReadKey();
                 }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+                {
+                    Console.Clear();
+                    var message = CustomExceptions.CustomDbUpdateException(e);
+                    foreach (var item in message)
+                    {
+                        Console.WriteLine($"{item}\n");
+                    }
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                }
                 catch (Exception e)
                 {
                     Console.Clear();

@@ -41,5 +41,13 @@ namespace Northwind.EF.Common
             List<String> result = new List<String>() { customMessage, e.Message };
             return result;
         }
+
+        public static List<String> CustomDbUpdateException(System.Data.Entity.Infrastructure.DbUpdateException e)
+        {
+            var customMessage = $"Exception type: {e.GetType()}";
+            var message = "The db cannot be modified because it is existing data in the script. Try loading a new record...";
+            List<String> result = new List<String>() { customMessage, e.Message, message };
+            return result;
+        }
     }
 }
