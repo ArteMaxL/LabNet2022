@@ -45,7 +45,7 @@ namespace Northwind.EF.Common
         public static List<String> CustomDbUpdateException(System.Data.Entity.Infrastructure.DbUpdateException e)
         {
             var customMessage = $"Exception type: {e.GetType()}";
-            var message = "The db cannot be modified because it is existing data in the script. Try deleting a new record...";
+            var message = "Cannot delete because this table is related to another table. Try deleting a new record...";
             List<String> result = new List<String>() { customMessage, e.Message, message };
             return result;
         }
