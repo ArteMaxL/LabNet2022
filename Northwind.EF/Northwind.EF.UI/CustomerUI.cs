@@ -88,14 +88,19 @@ namespace Northwind.EF.UI
                 Console.WriteLine("\n======================\n");
                 Console.ReadKey();
             }
+            catch (System.Data.Entity.Validation.DbEntityValidationException e)
+            {
+                Console.Clear();
+                var message = ExtensionMethods.DbEntityValidation(e);
+                Console.WriteLine($"{message}\n");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            }
             catch (Exception e)
             {
                 Console.Clear();
-                var message = CustomExceptions.CustomException(e);
-                foreach (var item in message)
-                {
-                    Console.WriteLine($"{item}\n");
-                }                
+                var message = ExtensionMethods.CustomException(e);
+                Console.WriteLine($"{message}\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
@@ -145,30 +150,23 @@ namespace Northwind.EF.UI
             catch (System.Data.Entity.Infrastructure.DbUpdateException e)
             {
                 Console.Clear();
-                var message = CustomExceptions.CustomDbUpdateException(e);
-                foreach (var item in message)
-                {
-                    Console.WriteLine($"{item}\n");
-                }
+                var message = ExtensionMethods.CustomDbUpdateException(e);
+                Console.WriteLine($"{message}\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
             catch (InvalidOperationException e)
             {
                 Console.Clear();
-                var message = CustomExceptions.CustomInvalidOperationException(e);
-                foreach (var item in message)
-                {                    
-                    Console.WriteLine($"{item}\n");                    
-                }
-                Console.WriteLine($"\nCompany with ID: {id} not found!\n");
+                var message = ExtensionMethods.CustomInvalidOperationException(e);
+                Console.WriteLine($"{message}\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }
             catch (Exception e)
             {
                 Console.Clear();
-                var message = CustomExceptions.CustomException(e);
+                var message = ExtensionMethods.CustomException(e);
                 foreach (var item in message)
                 {
                     Console.WriteLine($"{item}\n");
@@ -253,11 +251,8 @@ namespace Northwind.EF.UI
                     catch (Exception e)
                     {
                         Console.Clear();
-                        var message = CustomExceptions.CustomException(e);
-                        foreach (var item in message)
-                        {
-                            Console.WriteLine($"{item}\n");
-                        }
+                        var message = ExtensionMethods.CustomException(e);
+                        Console.WriteLine($"{message}\n");
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
                     }
@@ -272,11 +267,8 @@ namespace Northwind.EF.UI
             catch (InvalidOperationException e)
             {
                 Console.Clear();
-                var message = CustomExceptions.CustomInvalidOperationException(e);
-                foreach (var item in message)
-                {
-                    Console.WriteLine($"{item}\n");
-                }
+                var message = ExtensionMethods.CustomInvalidOperationException(e);
+                Console.WriteLine($"{message}\n");
                 Console.WriteLine($"\nCompany with ID: '{id}' not found!\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();

@@ -17,12 +17,12 @@ namespace Northwind.EF.Common
             }
             catch (FormatException e)
             {
-                CustomExceptions.CustomFormatException(e);                
+                ExtensionMethods.CustomFormatException(e);                
                 return false;
             }
             catch (Exception e)
             {
-                CustomExceptions.CustomException(e);
+                ExtensionMethods.CustomException(e);
                 return false;
             }
         }
