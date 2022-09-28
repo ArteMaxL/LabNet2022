@@ -45,7 +45,7 @@ namespace Northwind.EF.Common
 
         public string GenerateStringID(int length = 4)
         {
-            System.Guid guid = System.Guid.NewGuid();
+            Guid guid = Guid.NewGuid();
             string ID = guid.ToString().Substring(0, length);
 
             return "Z" + ID;
