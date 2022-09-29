@@ -32,8 +32,7 @@ namespace Northwind.EF.UI
         {
             CategoryLogic categoryLogic = new CategoryLogic();
             var valid = new Validation();
-            var categories = categoryLogic.GetAll();
-            int quantity = categories.Count() + 1;
+            int quantity = categoryLogic.GetNextId();
             string input = null;
             string inputName = null;
             string description = null;

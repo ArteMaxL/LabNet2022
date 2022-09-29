@@ -34,6 +34,12 @@ namespace Northwind.EF.Logic
             return _context.Categories.Find(id);
         }
 
+        public int GetNextId()
+        {
+            var category = _context.Categories.Max(c => c.CategoryID);
+            return category;
+        }
+
         public override void Update(Categories categoryNew)
         {
             var categoryUpdate = _context.Categories.Find(categoryNew.CategoryID);
