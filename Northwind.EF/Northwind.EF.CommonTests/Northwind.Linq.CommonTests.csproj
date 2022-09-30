@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.EF.Common\Northwind.EF.Common.csproj">
+    <ProjectReference Include="..\Northwind.EF.Common\Northwind.Linq.Common.csproj">
       <Project>{9ED0324B-1A68-4242-B4B2-C89776C7B448}</Project>
-      <Name>Northwind.EF.Common</Name>
+      <Name>Northwind.Linq.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

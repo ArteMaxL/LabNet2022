@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.UI", "Northwind.EF.UI\Northwind.EF.UI.csproj", "{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Linq.UI", "Northwind.EF.UI\Northwind.Linq.UI.csproj", "{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.Data", "Northwind.EF.Data\Northwind.EF.Data.csproj", "{CF9F4A42-EB34-4B73-8004-E352E314C59D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Linq.Data", "Northwind.EF.Data\Northwind.Linq.Data.csproj", "{CF9F4A42-EB34-4B73-8004-E352E314C59D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.Logic", "Northwind.EF.Logic\Northwind.EF.Logic.csproj", "{8D815BED-537A-4BE2-BFF9-A27904BBB8F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Linq.Logic", "Northwind.EF.Logic\Northwind.Linq.Logic.csproj", "{8D815BED-537A-4BE2-BFF9-A27904BBB8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.Entities", "Northwind.EF.Entities\Northwind.EF.Entities.csproj", "{2E7DE206-4CD5-460A-95A8-3414779EC59C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Linq.Entities", "Northwind.EF.Entities\Northwind.Linq.Entities.csproj", "{2E7DE206-4CD5-460A-95A8-3414779EC59C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.Common", "Northwind.EF.Common\Northwind.EF.Common.csproj", "{9ED0324B-1A68-4242-B4B2-C89776C7B448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Linq.Common", "Northwind.EF.Common\Northwind.Linq.Common.csproj", "{9ED0324B-1A68-4242-B4B2-C89776C7B448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.CommonTests", "Northwind.EF.CommonTests\Northwind.EF.CommonTests.csproj", "{69BB83FE-E0A7-4755-AA3E-FB18BB44E828}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Linq.CommonTests", "Northwind.EF.CommonTests\Northwind.Linq.CommonTests.csproj", "{69BB83FE-E0A7-4755-AA3E-FB18BB44E828}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

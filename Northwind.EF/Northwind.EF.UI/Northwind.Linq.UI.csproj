@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E7DE206-4CD5-460A-95A8-3414779EC59C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Northwind.EF.Entities</RootNamespace>
-    <AssemblyName>Northwind.EF.Entities</AssemblyName>
+    <ProjectGuid>{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Northwind.EF.UI</RootNamespace>
+    <AssemblyName>Northwind.EF.UI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -48,22 +50,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categories.cs" />
-    <Compile Include="CustomerDemographics.cs" />
-    <Compile Include="Customers.cs" />
-    <Compile Include="Employees.cs" />
-    <Compile Include="Orders.cs" />
-    <Compile Include="Order_Details.cs" />
-    <Compile Include="Products.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="CategoryUI.cs" />
+    <Compile Include="CustomerUI.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Region.cs" />
-    <Compile Include="Shippers.cs" />
-    <Compile Include="Suppliers.cs" />
-    <Compile Include="Territories.cs" />
+    <Compile Include="ShipperUI.cs" />
+    <Compile Include="UIBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind.EF.Common\Northwind.Linq.Common.csproj">
+      <Project>{9ed0324b-1a68-4242-b4b2-c89776c7b448}</Project>
+      <Name>Northwind.Linq.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.EF.Entities\Northwind.Linq.Entities.csproj">
+      <Project>{2e7de206-4cd5-460a-95a8-3414779ec59c}</Project>
+      <Name>Northwind.Linq.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.EF.Logic\Northwind.Linq.Logic.csproj">
+      <Project>{8d815bed-537a-4be2-bff9-a27904bbb8f1}</Project>
+      <Name>Northwind.Linq.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
