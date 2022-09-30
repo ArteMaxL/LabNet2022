@@ -1,6 +1,6 @@
-﻿using Northwind.EF.Common;
-using Northwind.EF.Entities;
-using Northwind.EF.Logic;
+﻿using Northwind.Linq.Common;
+using Northwind.Linq.Entities;
+using Northwind.Linq.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.UI
+namespace Northwind.Linq.UI
 {
     public class CategoryUI : UIBase
     {

@@ -1,12 +1,12 @@
-﻿using Northwind.EF.Entities;
-using Northwind.EF.Logic;
+﻿using Northwind.Linq.Entities;
+using Northwind.Linq.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.UI
+namespace Northwind.Linq.UI
 {
     public class Program
     {

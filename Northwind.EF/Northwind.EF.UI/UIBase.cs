@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.UI
+namespace Northwind.Linq.UI
 {
     public abstract class UIBase
     {

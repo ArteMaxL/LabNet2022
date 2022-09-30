@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.Common
+namespace Northwind.Linq.Common
 {
     public class ExtensionMethods : Exception
     {

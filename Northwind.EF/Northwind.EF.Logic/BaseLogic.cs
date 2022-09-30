@@ -1,11 +1,11 @@
-﻿using Northwind.EF.Data;
+﻿using Northwind.Linq.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.Logic
+namespace Northwind.Linq.Logic
 {
     public abstract class BaseLogic<T> : ICRUDLogic<T>
     {

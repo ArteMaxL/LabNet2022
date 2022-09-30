@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.Common
+namespace Northwind.Linq.Common
 {
     public class Validation
     {

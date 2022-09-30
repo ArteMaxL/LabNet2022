@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Northwind.EF.Data;
-using Northwind.EF.Entities;
+using Northwind.Linq.Data;
+using Northwind.Linq.Entities;
 
-namespace Northwind.EF.Logic
+namespace Northwind.Linq.Logic
 {
     public class CategoryLogic : BaseLogic<Categories>
     {
@@ -24,6 +24,7 @@ namespace Northwind.EF.Logic
             _context.SaveChanges();
         }
 
+        // Ejercicio 11 ?
         public override List<Categories> GetAll()
         {
             return _context.Categories.ToList();

@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Northwind.EF.Common;
+using Northwind.Linq.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.Common.Tests
+namespace Northwind.Linq.Common.Tests
 {
     [TestClass()]
     public class ValidationTests

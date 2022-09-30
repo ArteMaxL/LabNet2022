@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.Entities
+namespace Northwind.Linq.Entities
 {
     public class CustomersOrders
     {
+        public int OrderID { get; set; }
         public string CustomerID { get; set; }
         public string CompanyName { get; set; }
-        public int OrderID { get; set; }
     }
 }

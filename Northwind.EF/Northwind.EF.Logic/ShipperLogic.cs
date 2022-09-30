@@ -1,11 +1,11 @@
-﻿using Northwind.EF.Entities;
+﻿using Northwind.Linq.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Northwind.EF.Logic
+namespace Northwind.Linq.Logic
 {
     public class ShipperLogic : BaseLogic<Shippers>
     {
