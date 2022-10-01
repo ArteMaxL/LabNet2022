@@ -63,7 +63,7 @@ namespace Northwind.Linq.UI
         {
             Console.WriteLine("\n\t2 - Todos los productos sin stock.\n");
 
-            var products = _productLogic.GetProductsWhitoutStock().ToList();
+            var products = _productLogic.GetProductsWhitoutStock();
 
             if (products != null)
             {
@@ -90,7 +90,7 @@ namespace Northwind.Linq.UI
         {
             Console.WriteLine("\n\t3 - Todos los productos que tienen stock y que cuestan más de 3 por unidad.\n");
 
-            var products = _productLogic.GetProductsWhithStockPriceUpTo3().ToList();
+            var products = _productLogic.GetProductsWhithStockPriceUpTo3();
 
             if (products != null)
             {

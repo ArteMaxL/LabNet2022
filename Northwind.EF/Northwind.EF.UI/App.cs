@@ -1,4 +1,5 @@
-﻿using Northwind.Linq.Entities;
+﻿using Northwind.EF.UI;
+using Northwind.Linq.Entities;
 using Northwind.Linq.Logic;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Northwind.Linq.UI
 {
     public class App
     {
-        public App(){}
+        public App() { }
 
         public void MainMenu()
         {
@@ -19,7 +20,7 @@ namespace Northwind.Linq.UI
         }
 
         private static void Start()
-        {            
+        {
             while (true)
             {
                 Console.Clear();
@@ -45,9 +46,9 @@ namespace Northwind.Linq.UI
                         break;
                     case "2":
                         Opcionales();
-                        break;                   
+                        break;
                     case "0":
-                        Console.WriteLine("\n===========End Program=============");
+                        Console.WriteLine("\n========== Programa Finalizado ============");
                         Thread.Sleep(1500);
                         Environment.Exit(0);
                         break;
@@ -61,7 +62,7 @@ namespace Northwind.Linq.UI
             var obligatorios = new ObligatoriosUI();
             while (true)
             {
-                Console.Clear();                
+                Console.Clear();
                 Console.WriteLine("╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
                 Console.WriteLine("║===================================== Ejercicios Obligatorios Consultas con LINQ =====================================║");
                 Console.WriteLine("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
@@ -79,7 +80,7 @@ namespace Northwind.Linq.UI
                 Console.WriteLine("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
                 Console.WriteLine("║ 7 - Join entre Customers y Orders donde los customers sean de la Región WA y la fecha de orden sea mayor a 1/1/1997. ║");
                 Console.WriteLine("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 0 - Exit.                                                                                                            ║");
+                Console.WriteLine("║ 0 - Volver al Menu Principal.                                                                                                            ║");
                 Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("\nChoice: ");
 
@@ -120,102 +121,51 @@ namespace Northwind.Linq.UI
 
         private static void Opcionales()
         {
+            var opcionales = new OpcionalesUI();
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("╔═════════════════════════════════════════╗");
-                Console.WriteLine("║================Customers================║");
-                Console.WriteLine("╠═════════════════════════════════════════╣");
-                Console.WriteLine("║ 1 - Add New.                            ║");
-                Console.WriteLine("╠═════════════════════════════════════════╣");
-                Console.WriteLine("║ 2 - Update (Company Name, Contact Name).║");
-                Console.WriteLine("╠═════════════════════════════════════════╣");
-                Console.WriteLine("║ 3 - Delete (ID).                        ║");
-                Console.WriteLine("╠═════════════════════════════════════════╣");
-                Console.WriteLine("║ 4 - List.                               ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 8 - Primeros 3 Customers de la Región WA.                                                                           ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 9 - Lista de productos ordenados por nombre.                                                                        ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 10 - Lista de productos ordenados por unit in stock de mayor a menor.                                               ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 11 - Categorías asociadas a los productos.                                                                          ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 12 - Primer elemento de una lista de productos.                                                                     ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 13 - Customer con la cantidad de ordenes asociadas.                                                                 ║");
-                Console.WriteLine("╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 0 - Exit.                                                                                                           ║");
-                Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
-                Console.WriteLine("╠═════════════════════════════════════════╣");
-                Console.WriteLine("║ 0 - Back to Main Menu.                  ║");
-                Console.WriteLine("╚═════════════════════════════════════════╝");
+                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║===================================== Ejercicios Opcionales Consultas con LINQ =====================================║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 1 - Primeros 3 Customers de la Región WA.                                                                          ║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 2 - Lista de productos ordenados por nombre.                                                                       ║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 3 - Lista de productos ordenados por unit in stock de mayor a menor.                                               ║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 4 - Categorías asociadas a los productos.                                                                          ║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 5 - Primer elemento de una lista de productos.                                                                     ║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 6 - Devolver los Customer con la cantidad de ordenes asociadas.                                                    ║");
+                Console.WriteLine("╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+                Console.WriteLine("║ 0 - Volver al Menu Principal.                                                                                      ║");
+                Console.WriteLine("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("\nChoice: ");
 
                 var choice = Console.ReadLine();
                 Console.Clear();
 
-                var UI = new CustomerUI();
                 switch (choice)
                 {
                     case "1":
-                        UI.Add();
+                        opcionales.Ejercicio1();
                         break;
                     case "2":
-                        UI.Update();
+                        opcionales.Ejercicio2();
                         break;
                     case "3":
-                        UI.Delete();
+                        opcionales.Ejercicio3();
                         break;
                     case "4":
-                        UI.List();
+                        opcionales.Ejercicio4();
                         break;
-                    case "0":
-                        Start();
+                    case "5":
+                        opcionales.Ejercicio5();
                         break;
-                    default:
-                        break;
-                }
-            }
-        }
-        private static void ShippersMenu()
-        {
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine("╔══════════════════════════════════╗");
-                Console.WriteLine("║=============Shippers=============║");
-                Console.WriteLine("╠══════════════════════════════════╣");
-                Console.WriteLine("║ 1 - Add New.                     ║");
-                Console.WriteLine("╠══════════════════════════════════╣");
-                Console.WriteLine("║ 2 - Update (Company Name, Phone).║");
-                Console.WriteLine("╠══════════════════════════════════╣");
-                Console.WriteLine("║ 3 - Delete (ID).                 ║");
-                Console.WriteLine("╠══════════════════════════════════╣");
-                Console.WriteLine("║ 4 - List.                        ║");
-                Console.WriteLine("╠══════════════════════════════════╣");
-                Console.WriteLine("║ 0 - Back to Main Menu.           ║");
-                Console.WriteLine("╚══════════════════════════════════╝");
-                Console.Write("\nChoice: ");
-
-                var choice = Console.ReadLine();
-                Console.Clear();
-
-                var UI = new ShipperUI();
-                switch (choice)
-                {
-                    case "1":
-                        UI.Add();
-                        break;
-                    case "2":
-                        UI.Update();
-                        break;
-                    case "3":
-                        UI.Delete();
-                        break;
-                    case "4":
-                        UI.List();
+                    case "6":
+                        opcionales.Ejercicio6();
                         break;
                     case "0":
                         Start();

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace Northwind.Linq.Logic
 
         public override IQueryable<Products> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Products;
         }
 
         public override Products GetOne(int id)
@@ -73,10 +74,25 @@ namespace Northwind.Linq.Logic
             return products.ToList();
         }
 
-        public Products GetFirstElementOfList(List<Products> productlist)
+        public Products GetFirstElementOfList(IQueryable<Products> productlist)
         {
             var product = productlist.First();
             return product;
-        } 
+        }
+
+        public IQueryable<ProductCategories> ProductByCategories()
+        {
+            var products = from Categories in _context.Categories
+                           join Products in _context.Products
+                           on Categories.CategoryID equals Products.CategoryID
+                           select new ProductCategories
+                           {
+                               ProductID = Products.ProductID,
+                               ProductName = Products.ProductName,
+                               CategoryID = Categories.CategoryID,
+                               CategoryName = Categories.CategoryName
+                           };
+            return products;
+        }
     }
 }
