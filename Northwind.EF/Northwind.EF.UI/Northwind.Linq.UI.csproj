@@ -51,8 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="BaseUI.cs" />
     <Compile Include="CategoryUI.cs" />
     <Compile Include="CustomerUI.cs" />
+    <Compile Include="ObligatoriosUI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShipperUI.cs" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Linq.Logic
 {
-    internal class ProductLogic : BaseLogic<Products>
+    public class ProductLogic : BaseLogic<Products>
     {
 
         // Metodos Heredados 
@@ -42,7 +42,7 @@ namespace Northwind.Linq.Logic
         {
             var products = _context.Products.Where(p => p.UnitsInStock == 0)
                                             .ToList();
-            return products;
+            return (products != null)? products : throw new NullReferenceException();
         }
 
         public List<Products> GetProductsWhithStockPriceUpTo3()
@@ -69,10 +69,16 @@ namespace Northwind.Linq.Logic
         public List<Products> GetProductsOrderByUnitStockMajorToMinor()
         {
             var products = from product in _context.Products
-                            orderby product.UnitsInStock descending
-                            select product;
+                           orderby product.UnitsInStock descending
+                           select product;
 
             return products.ToList();
         }
+
+        public Products GetFirstElementOfList(List<Products> productlist)
+        {
+            var product = productlist.First();
+            return product;
+        } 
     }
 }

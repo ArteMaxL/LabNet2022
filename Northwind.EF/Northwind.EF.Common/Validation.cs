@@ -20,6 +20,11 @@ namespace Northwind.Linq.Common
                 ExtensionMethods.CustomFormatException(e);                
                 return false;
             }
+            catch (OverflowException e)
+            {
+                ExtensionMethods.CustomOverflowException(e);
+                return false;
+            }
             catch (Exception e)
             {
                 ExtensionMethods.CustomException(e);
@@ -41,6 +46,17 @@ namespace Northwind.Linq.Common
             
             if (count <= limit) return true;
             else return false;
+        }
+
+        public bool ValidCharId(string input,int min = 5, int limit = 15)
+        {
+            int count = input.Length;
+            if (input.Trim() != string.Empty)
+            {
+                if (count == min && count <= limit) return true;
+                else return false;
+            }
+            return false;
         }
 
         public string GenerateStringID(int length = 4)

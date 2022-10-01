@@ -11,5 +11,6 @@ namespace Northwind.Linq.Entities
         public int OrderID { get; set; }
         public string CustomerID { get; set; }
         public string CompanyName { get; set; }
+        public int QuantityOrders { get; set; }
     }
 }
