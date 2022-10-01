@@ -38,17 +38,15 @@ namespace Northwind.Linq.Logic
 
         // Metodos Especificos TP 5
 
-        public List<Products> GetProductsWhitoutStock()
+        public IQueryable<Products> GetProductsWhitoutStock()
         {
-            var products = _context.Products.Where(p => p.UnitsInStock == 0)
-                                            .ToList();
-            return (products != null)? products : throw new NullReferenceException();
+            var products = _context.Products.Where(p => p.UnitsInStock == 0);
+            return products;
         }
 
-        public List<Products> GetProductsWhithStockPriceUpTo3()
+        public IQueryable<Products> GetProductsWhithStockPriceUpTo3()
         {
-            var products = _context.Products.Where(p => p.UnitsInStock > 0 && p.UnitPrice > 3)
-                                            .ToList();
+            var products = _context.Products.Where(p => p.UnitsInStock > 0 && p.UnitPrice > 3);                                            
             return products;
         }
 

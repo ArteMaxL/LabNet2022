@@ -92,13 +92,13 @@ namespace Northwind.Linq.UI
                         obligatorios.Ejercicio1();
                         break;
                     case "2":
-                       // CustomersMenu();
+                        obligatorios.Ejercicio2();
                         break;
                     case "3":
-                        ShippersMenu();
+                        obligatorios.Ejercicio3();
                         break;
                     case "4":
-                        ShippersMenu();
+                        obligatorios.Ejercicio4();
                         break;
                     case "5":
                         ShippersMenu();
