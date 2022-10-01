@@ -4,9 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contacto</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    
+    <form action="" method="post" id="form">
+        <div class="form">
+            <h1>CONTACTO</h1>
+            <h3>Completa tus datos.</h3>
+            <div class="grupo">
+                <input type="text" name="" id="nombre" ><span class="barra"></span>
+                <label for="">Nombre:</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="apellido" ><span class="barra"></span>
+                <label for="">Apellido:</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="edad" ><span class="barra"></span>
+                <label for="">Edad:</label>
+            </div>
+            <p>
+                <div class="radio" >
+                    <input type="radio" class="form-check-input" id='masculino' name="genero" value="masculino">
+                    <label  for="male">Masculino</label>                    
+                </div>
+            </p>            
+            <p>
+                <div class="radio" >
+                    <input type="radio" class="form-check-input" id='femenino' name="genero" value="femenino">
+                    <label  for="female">Femenino</label>                    
+                </div>
+            </p>            
+            <p>
+                <div class="radio" >
+                    <input type="radio" class="form-check-input" id='otro' name="genero" value="otro">
+                <label  for="other">Otro</label>                    
+                </div>
+            </p>
+            <h4>Información adicional:</h4>
+            <div class="grupo">
+                <input type="text" name="" id="nombre" ><span class="barra"></span>
+                <label for="">Empresa:</label>
+            </div>                      
+            <button type="submit">Submit</button>
+            <p class="warnings" id="warnings"></p>
+        </div>
+    </form>
+    <script src="./scripts/form.js"></script>
 </body>
 </html>
