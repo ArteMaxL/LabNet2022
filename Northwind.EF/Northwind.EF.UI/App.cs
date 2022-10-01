@@ -79,7 +79,7 @@ namespace Northwind.Linq.UI
                 Console.WriteLine("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
                 Console.WriteLine("║ 7 - Join entre Customers y Orders donde los customers sean de la Región WA y la fecha de orden sea mayor a 1/1/1997. ║");
                 Console.WriteLine("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-                Console.WriteLine("║ 0 - Volver al Menu Principal.                                                                                                            ║");
+                Console.WriteLine("║ 0 - Volver al Menu Principal.                                                                                        ║");
                 Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
                 Console.Write("\nChoice: ");
 

@@ -57,9 +57,9 @@ namespace Northwind.Linq.Logic
             return products;
         }
 
-        public Products GetProductWithId789()
+        public Products GetProductWithId789(IQueryable<Products> products)
         {
-            var product = _context.Products.Where(p => p.ProductID == 789)
+            var product = products.Where(p => p.ProductID == 789)
                                            .FirstOrDefault();
             return product;
         }

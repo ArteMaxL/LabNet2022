@@ -144,7 +144,7 @@ namespace Northwind.Linq.UI
         {
             Console.WriteLine("\n\t5 - Primer elemento o nulo de una lista de productos donde el ID de producto sea igual a 789.\n");
                         
-            var products = _productLogic.GetProductWithId789();
+            var products = _productLogic.GetProductWithId789(_productLogic.GetAll());
 
             if (products != null)
             {
