@@ -24,7 +24,6 @@ namespace Northwind.Linq.Logic
             _context.SaveChanges();
         }
 
-        // Ejercicio 11 ?
         public override IQueryable<Categories> GetAll()
         {
             return _context.Categories;

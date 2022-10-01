@@ -61,8 +61,7 @@ namespace Northwind.Linq.Logic
 
         public IQueryable<Customers> GetCustomersRegionWA()
         {
-            var customers = _context.Customers.Where(c => c.Region == "WA");
-                                              //.ToList();
+            var customers = _context.Customers.Where(c => c.Region == "WA");                                              
             return customers;
         }
 
@@ -86,11 +85,10 @@ namespace Northwind.Linq.Logic
             return customersOrders;
         }
 
-        public List<Customers> GetFirst3CustomersRegionWA()
+        public IQueryable<Customers> GetFirst3CustomersRegionWA()
         {
             var customers = _context.Customers.Where(c => c.Region == "WA")
-                                              .Take(3)
-                                              .ToList();
+                                              .Take(3);
             return customers;
         }
 

@@ -38,7 +38,6 @@ namespace Northwind.Linq.UI
                 var choice = Console.ReadLine();
                 Console.Clear();
 
-                var UI = new CategoryUI();
                 switch (choice)
                 {
                     case "1":

@@ -10,16 +10,18 @@ namespace Northwind.Linq.Logic
 {
     public class ProductLogic : BaseLogic<Products>
     {
-
-        // Metodos Heredados 
-        public override void Add(Products newT)
+        public override void Add(Products product)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(product);
+            _context.SaveChanges();
         }
 
         public override void Delete(int id)
         {
-            throw new NotImplementedException();
+            var product = _context.Products.Find(id);
+            _context.Products.Remove(product);
+
+            _context.SaveChanges();
         }
 
         public override IQueryable<Products> GetAll()
@@ -29,15 +31,19 @@ namespace Northwind.Linq.Logic
 
         public override Products GetOne(int id)
         {
-            throw new NotImplementedException();
+            return _context.Products.Find(id);
         }
 
-        public override void Update(Products updateT)
+        public override void Update(Products productNew)
         {
-            throw new NotImplementedException();
-        }
+            var productUpdate = _context.Products.Find(productNew.ProductID);
 
-        // Metodos Especificos TP 5
+            productUpdate.ProductName = productNew.ProductName;
+            productUpdate.UnitsInStock = productNew.UnitsInStock;
+            productUpdate.UnitPrice = productNew.UnitPrice;
+
+            _context.SaveChanges();
+        }
 
         public IQueryable<Products> GetProductsWhitoutStock()
         {
