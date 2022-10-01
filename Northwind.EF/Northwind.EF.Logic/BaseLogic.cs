@@ -20,7 +20,7 @@ namespace Northwind.Linq.Logic
 
         public abstract void Delete(int id);
 
-        public abstract List<T> GetAll();
+        public abstract IQueryable<T> GetAll();
 
         public abstract T GetOne(int id);
 

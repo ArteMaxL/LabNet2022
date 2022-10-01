@@ -12,5 +12,7 @@ namespace Northwind.Linq.Entities
         public string CustomerID { get; set; }
         public string CompanyName { get; set; }
         public int QuantityOrders { get; set; }
+        public string Region { get; set; }
+        public string OrderDate { get; set; }
     }
 }

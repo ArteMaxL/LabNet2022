@@ -117,7 +117,7 @@ namespace Northwind.Linq.UI
         {
             Console.WriteLine("\n\t4 - Todos los customers de la Región WA.\n");
 
-            var customers = _customerLogic.GetCustomersRegionWA().ToList();
+            var customers = _customerLogic.GetCustomersRegionWA();
 
             if (customers != null)
             {
@@ -135,6 +135,78 @@ namespace Northwind.Linq.UI
             else
             {
                 Console.WriteLine($"No existen Customers en la Region WA.");
+                Console.WriteLine("Presione cualquier tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
+
+        public void Ejercicio5()
+        {
+            Console.WriteLine("\n\t5 - Primer elemento o nulo de una lista de productos donde el ID de producto sea igual a 789.\n");
+                        
+            var products = _productLogic.GetProductWithId789();
+
+            if (products != null)
+            {
+                Console.WriteLine(products.ToString());
+                Console.WriteLine("\nPresione cualquier tecla para continuar...\n");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine($"No existen Productos con el ID 789.");
+                Console.WriteLine("Presione cualquier tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
+
+        public void Ejercicio6()
+        {
+            Console.WriteLine("\n\t6 - Nombre de los Customers. Mostrarlos en Mayuscula y en Minuscula.\n");
+
+            var customers = _customerLogic.GetAll();
+
+            if (customers != null)
+            {
+                foreach (var customer in customers)
+                {
+                    Console.WriteLine($"Company Name (Mayuscula): {customer.CompanyName.ToUpper()}");
+                    Console.WriteLine($"Company Name (Minuscula): {customer.CompanyName.ToLower()}");
+                    Console.WriteLine("------------------------------------------------");
+                }
+                Console.WriteLine("\nPresione cualquier tecla para continuar...\n");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine($"No existen Customers.");
+                Console.WriteLine("Presione cualquier tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
+
+        public void Ejercicio7()
+        {
+            Console.WriteLine("\n7 - Join entre Customers y Orders donde los customers sean de la Región WA y la fecha de orden sea mayor a 1/1/1997.\n");
+
+            var customers = _customerLogic.CustomersJoinOrdersRegionWADate1997();
+
+            if (customers != null)
+            {
+                foreach (var customer in customers)
+                {
+                    Console.WriteLine($"Customer ID: {customer.CustomerID}");
+                    Console.WriteLine($"Company Name: {customer.CompanyName}");
+                    Console.WriteLine($"Company Region: {customer.Region}");
+                    Console.WriteLine($"Order Date: {customer.OrderDate}");
+                    Console.WriteLine("------------------------------------------------");
+                }
+                Console.WriteLine("\nPresione cualquier tecla para continuar...\n");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine($"No existen Customers con Orders en la Region WA con fecha de Orden mayor a 1/1/1997.");
                 Console.WriteLine("Presione cualquier tecla para continuar...");
                 Console.ReadKey();
             }

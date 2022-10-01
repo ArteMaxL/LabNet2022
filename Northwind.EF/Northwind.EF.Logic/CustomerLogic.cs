@@ -32,10 +32,9 @@ namespace Northwind.Linq.Logic
             _context.SaveChanges();
         }
 
-        // Ejercicio 6 ??
-        public override List<Customers> GetAll()
+        public override IQueryable<Customers> GetAll()
         {
-            return _context.Customers.ToList();
+            return _context.Customers;
         }
 
         public override Customers GetOne(int id)
@@ -80,6 +79,8 @@ namespace Northwind.Linq.Logic
                                       CustomerID = Customers.CustomerID,
                                       CompanyName = Customers.CompanyName,
                                       OrderID = Orders.OrderID,
+                                      Region = Customers.Region,
+                                      OrderDate = Orders.OrderDate.ToString(),
                                   };
 
             return customersOrders;

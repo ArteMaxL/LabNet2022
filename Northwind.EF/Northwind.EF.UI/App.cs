@@ -101,13 +101,13 @@ namespace Northwind.Linq.UI
                         obligatorios.Ejercicio4();
                         break;
                     case "5":
-                        ShippersMenu();
+                        obligatorios.Ejercicio5();
                         break;
                     case "6":
-                        ShippersMenu();
+                        obligatorios.Ejercicio6();
                         break;
                     case "7":
-                        ShippersMenu();
+                        obligatorios.Ejercicio7();
                         break;
                     case "0":
                         Start();

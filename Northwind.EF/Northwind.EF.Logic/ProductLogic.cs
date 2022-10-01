@@ -21,7 +21,7 @@ namespace Northwind.Linq.Logic
             throw new NotImplementedException();
         }
 
-        public override List<Products> GetAll()
+        public override IQueryable<Products> GetAll()
         {
             throw new NotImplementedException();
         }

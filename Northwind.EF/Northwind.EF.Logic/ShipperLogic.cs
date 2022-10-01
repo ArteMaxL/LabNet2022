@@ -23,9 +23,9 @@ namespace Northwind.Linq.Logic
             _context.SaveChanges();
         }
 
-        public override List<Shippers> GetAll()
+        public override IQueryable<Shippers> GetAll()
         {
-            return _context.Shippers.ToList();
+            return _context.Shippers;
         }
 
         public override Shippers GetOne(int id)
