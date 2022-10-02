@@ -24,12 +24,12 @@ form.addEventListener("submit", e =>{
         parrafo.innerHTML = warnings
     }else{
         parrafo.innerHTML = "Formulario Enviado!"
+        setTimeout(()=>{
+            deleteForm();
+        }, 2000);
     }
 });
 
 const deleteForm = () => {
-    nombre.value = "";  
-    apellido.value = "";
-    edad.value = ""; 
-    empresa.value = "";
+    document.getElementById("form").reset();
   };
