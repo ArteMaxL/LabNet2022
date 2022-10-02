@@ -2,6 +2,7 @@ const form = document.getElementById("form");
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const edad = document.getElementById("edad");
+const empresa = document.getElementById("empresa");
 const parrafo = document.getElementById("warnings");
 
 form.addEventListener("submit", e =>{
@@ -17,9 +18,7 @@ form.addEventListener("submit", e =>{
     if(apellido.value.trim() == null || apellido.value.trim() == "" || apellido.value.trim().length < 4){
         warnings += `El Apellido no es válido<br>`
         entrar = true
-    }
-    
-    
+    } 
 
     if(entrar){
         parrafo.innerHTML = warnings
@@ -27,3 +26,10 @@ form.addEventListener("submit", e =>{
         parrafo.innerHTML = "Formulario Enviado!"
     }
 });
+
+const deleteForm = () => {
+    nombre.value = "";  
+    apellido.value = "";
+    edad.value = ""; 
+    empresa.value = "";
+  };

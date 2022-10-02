@@ -11,7 +11,7 @@
     <body>
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" id="form">
+                <form action="" method="post" id="form" autocomplete="off" onreset="return deleteForm()">
                     
                     <h1> CONTACTO </h1>
                     
@@ -42,8 +42,8 @@
                         <input type="text" id="empresa" name="empresa">        
                         
                     </fieldset>
-
-                    <button class="button-clean" type="reset">Limpiar</button>
+                    
+                    <input class="button-clean" type="reset" value="Limpiar">
                     <button class="submit" type="submit">Submit</button>
                     <p class="warnings" id="warnings"></p>
                 </form>                            
