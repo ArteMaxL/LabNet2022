@@ -64,20 +64,19 @@ namespace Northwind.Linq.Logic
             return product;
         }
 
-        public List<Products> GetProductsOrderByName()
+        public IQueryable<Products> GetProductsOrderByName()
         {
-            var products = _context.Products.OrderBy(p => p.ProductName)
-                                            .ToList();
+            var products = _context.Products.OrderBy(p => p.ProductName);                                            
             return products;
         }
         
-        public List<Products> GetProductsOrderByUnitStockMajorToMinor()
+        public IQueryable<Products> GetProductsOrderByUnitStockMajorToMinor()
         {
             var products = from product in _context.Products
                            orderby product.UnitsInStock descending
                            select product;
 
-            return products.ToList();
+            return products;
         }
 
         public Products GetFirstElementOfList(IQueryable<Products> productlist)
