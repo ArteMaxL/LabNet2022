@@ -82,7 +82,7 @@ namespace Northwind.Linq.Logic
 
         public Products GetFirstElementOfList(IQueryable<Products> productlist)
         {
-            var product = productlist.First();
+            var product = productlist.FirstOrDefault();
             return product;
         }
 
