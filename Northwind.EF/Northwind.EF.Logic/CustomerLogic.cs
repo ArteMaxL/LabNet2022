@@ -79,7 +79,7 @@ namespace Northwind.Linq.Logic
                                       CompanyName = Customers.CompanyName,
                                       OrderID = Orders.OrderID,
                                       Region = Customers.Region,
-                                      OrderDate = Orders.OrderDate.ToString(),
+                                      OrderDate = Orders.OrderDate,
                                   };
 
             return customersOrders;

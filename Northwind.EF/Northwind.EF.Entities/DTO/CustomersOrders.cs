@@ -13,6 +13,6 @@ namespace Northwind.Linq.Entities
         public string CompanyName { get; set; }
         public int QuantityOrders { get; set; }
         public string Region { get; set; }
-        public string OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
     }
 }
