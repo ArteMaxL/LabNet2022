@@ -1,0 +1,28 @@
+﻿@model IQueryable<Northwind.MVC.UI.Models.CategoryView>
+
+@{
+    ViewBag.Title = "Category Page";
+}
+
+<h1>Index Category Page</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <th scope="row">@category.Id</th>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
