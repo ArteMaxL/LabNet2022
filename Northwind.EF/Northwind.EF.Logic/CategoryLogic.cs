@@ -24,9 +24,9 @@ namespace Northwind.EF.Logic
             _context.SaveChanges();
         }
 
-        public override List<Categories> GetAll()
+        public override IQueryable<Categories> GetAll()
         {
-            return _context.Categories.ToList();
+            return _context.Categories;
         }
 
         public override Categories GetOne(int id)

@@ -31,9 +31,9 @@ namespace Northwind.EF.Logic
             _context.SaveChanges();
         }
 
-        public override List<Customers> GetAll()
+        public override IQueryable<Customers> GetAll()
         {
-            return _context.Customers.ToList();
+            return _context.Customers;
         }
 
         public override Customers GetOne(int id)

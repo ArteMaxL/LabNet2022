@@ -9,7 +9,7 @@ namespace Northwind.EF.Logic
 {
     public interface ICRUDLogic<T>
     {
-        List<T> GetAll();
+        IQueryable<T> GetAll();
         T GetOne(int id);
         void Add(T newT);
         void Delete(int id);
