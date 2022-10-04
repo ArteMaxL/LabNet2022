@@ -26,5 +26,32 @@ namespace Northwind.MVC.UI.Controllers
 
             return View(categoryViews);
         }
+
+        public ActionResult Insert()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Insert(CategoryView categoryView)
+        {
+            try
+            {
+                Categories categoryEntity = new Categories
+                {
+                    CategoryName = categoryView.Name,
+                    Description = categoryView.Description,
+                };
+
+                categoryLogic.Add(categoryEntity);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+        }
     }
 }
