@@ -53,5 +53,11 @@ namespace Northwind.MVC.UI.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            categoryLogic.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
