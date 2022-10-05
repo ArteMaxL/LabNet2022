@@ -12,7 +12,7 @@
             <th scope="col">ID</th>
             <th scope="col">Category Name</th>
             <th scope="col">Description</th>
-            <th scope="col">Action</th> 
+            <th class="text-center" scope="col">Action</th> 
         </tr>
     </thead>
 
@@ -23,7 +23,8 @@
                 <th scope="row">@category.Id</th>
                 <td>@category.Name</td>
                 <td>@category.Description</td>
-                <td class="btn btn-warning p-2">@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm('Are you sure to delete?')" })</td>
+                <td class="text-center"><button type="button" class="btn btn-sm btn-warning">@Html.ActionLink("Update", "Insert", "Category")</button>
+                <button type="button" class="btn btn-sm btn-danger">@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm('Are you sure to delete?')" })</button></td>
             </tr>
         }
     </tbody>

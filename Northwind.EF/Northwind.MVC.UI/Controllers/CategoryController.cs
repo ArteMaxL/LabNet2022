@@ -3,6 +3,7 @@ using Northwind.EF.Logic;
 using Northwind.MVC.UI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,28 +37,48 @@ namespace Northwind.MVC.UI.Controllers
         [HttpPost]
         public ActionResult Insert(CategoryView categoryView)
         {
-            try
-            {
-                Categories categoryEntity = new Categories
+            Categories categoryEntity = new Categories
                 {
                     CategoryName = categoryView.Name,
                     Description = categoryView.Description,
                 };
 
-                categoryLogic.Add(categoryEntity);
-
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("error", "Invalid model");
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+
+            if (categoryEntity.CategoryID == 0)
             {
-                return RedirectToAction("Index", "Error");
+                categoryLogic.Add(categoryEntity);
             }
+            else
+            {
+                try
+                {
+                    categoryLogic.Update(categoryEntity);
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+                {
+                    ModelState.AddModelError("error", e.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
-            categoryLogic.Delete(id);
-            return RedirectToAction("Index");
+            try
+            {
+                categoryLogic.Delete(id);
+                return RedirectToAction("Index");
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                return RedirectToAction("Index", "Error");
+            }
         }
     }
 }
