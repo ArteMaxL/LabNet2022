@@ -13,7 +13,8 @@ namespace Northwind.MVC.UI.Controllers
     public class CategoryController : Controller
     {
         CategoryLogic categoryLogic = new CategoryLogic();
-        // GET: Category
+
+        [HttpGet]
         public ActionResult Index()
         {
             IQueryable<Categories> categories = categoryLogic.GetAll();
@@ -28,9 +29,9 @@ namespace Northwind.MVC.UI.Controllers
             return View(categoryViews);
         }
 
+        [HttpGet]
         public ActionResult Insert()
         {
-
             return View();
         }
 
@@ -68,6 +69,7 @@ namespace Northwind.MVC.UI.Controllers
             return RedirectToAction("Index");
         }
 
+        //[HttpPost]
         public ActionResult Delete(int id)
         {
             try
