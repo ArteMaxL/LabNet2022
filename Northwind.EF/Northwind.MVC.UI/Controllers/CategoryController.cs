@@ -19,6 +19,15 @@ namespace Northwind.MVC.UI.Controllers
         {
             IQueryable<Categories> categories = categoryLogic.GetAll();
 
+            /* var lst = from c in categories
+                      select new CategoryView
+                      {
+                          Id = c.CategoryID,
+                          Name = c.CategoryName,
+                          Description = c.Description,
+                      };
+            */
+
             IQueryable<CategoryView> categoryViews = categories.Select(c => new CategoryView
             {
                 Id = c.CategoryID,
@@ -64,9 +73,36 @@ namespace Northwind.MVC.UI.Controllers
                 {
                     ModelState.AddModelError("error", e.Message);
                     return RedirectToAction("Index", "Error");
+                    throw new DbUnexpectedValidationException(e.Message);
                 }
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddNew(CategoryView categoryView)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Categories categoryEntity = new Categories
+                    {
+                        CategoryName = categoryView.Name,
+                        Description = categoryView.Description,
+                    };
+
+                    categoryLogic.Add(categoryEntity);
+                    
+                    return RedirectToAction("Index");
+                }
+
+                return View(categoryView);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+                throw new Exception(e.Message);                
+            }
         }
 
         //[HttpPost]
