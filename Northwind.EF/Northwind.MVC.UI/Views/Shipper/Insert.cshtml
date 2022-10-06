@@ -1,0 +1,42 @@
+﻿@model Northwind.MVC.UI.Models.ShipperView
+
+@{
+    ViewBag.Title = "Shipper";
+}
+
+@using (Html.BeginForm("Insert", "Shipper", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>Shipper</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(s => s.Name)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(s => s.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(s => s.Name, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(s => s.Phone)
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(s => s.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(s => s.Phone, null, new { @class = "text-danger" })
+                </div>
+
+                <br />
+                <p>
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                </p>
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/jqueryval")
+
+            </fieldset>
+        </div>
+    </div>
+}
