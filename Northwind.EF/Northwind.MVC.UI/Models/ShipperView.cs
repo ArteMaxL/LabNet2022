@@ -14,7 +14,7 @@ namespace Northwind.MVC.UI.Models
         [StringLength(40, ErrorMessage = "Max 40 characters!")]
         public string Name { get; set; }
 
-        [Phone]
+        [Phone(ErrorMessage = "Enter a valid phone number!")]
         [StringLength(24, ErrorMessage = "Max 24 characters!")]
         public string Phone { get; set; }
     }

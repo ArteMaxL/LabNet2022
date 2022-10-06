@@ -136,6 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryView.cs" />
+    <Compile Include="Models\CustomerView.cs" />
     <Compile Include="Models\ShipperView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -213,10 +214,11 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Shipper\Index.cshtml" />
     <Content Include="Views\Shipper\Insert.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

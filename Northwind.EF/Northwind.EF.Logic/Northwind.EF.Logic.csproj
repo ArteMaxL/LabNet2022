@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Northwind.EF.Common\Northwind.EF.Common.csproj">
+      <Project>{9ed0324b-1a68-4242-b4b2-c89776c7b448}</Project>
+      <Name>Northwind.EF.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Northwind.EF.Data\Northwind.EF.Data.csproj">
       <Project>{cf9f4a42-eb34-4b73-8004-e352e314c59d}</Project>
       <Name>Northwind.EF.Data</Name>

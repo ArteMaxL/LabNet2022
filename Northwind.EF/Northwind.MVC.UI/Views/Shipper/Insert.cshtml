@@ -24,7 +24,7 @@
                     @Html.LabelFor(s => s.Phone)
                 </div>
                 <div class="editor-field">
-                    @Html.TextAreaFor(s => s.Phone, new { @class = "form-control" })
+                    @Html.TextBoxFor(s => s.Phone, new { @class = "form-control" })
                     @Html.ValidationMessageFor(s => s.Phone, null, new { @class = "text-danger" })
                 </div>
 

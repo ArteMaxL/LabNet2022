@@ -1,6 +1,8 @@
-﻿using Northwind.EF.Entities;
+﻿using Northwind.EF.Common;
+using Northwind.EF.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,10 @@ namespace Northwind.EF.Logic
     {
         public override void Add(Customers customer)
         {
+            var valid = new Validation();
+            var stringId = valid.GenerateStringID();
+            customer.CustomerID = stringId;
+
             _context.Customers.Add(customer);
             _context.SaveChanges();
         }

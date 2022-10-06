@@ -1,0 +1,66 @@
+﻿@model Northwind.MVC.UI.Models.CustomerView
+
+@{
+    ViewBag.Title = "Customer";
+}
+
+@using (Html.BeginForm("Insert", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>Customer</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(c => c.CompanyName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(c => c.CompanyName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.CompanyName, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(c => c.ContactName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(c => c.ContactName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.ContactName, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(c => c.ContactTitle)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(c => c.ContactTitle, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.ContactTitle, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(c => c.City)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(c => c.City, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.City, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(c => c.Phone)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(c => c.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Phone, null, new { @class = "text-danger" })
+                </div>
+
+                <br />
+                <p>
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                </p>
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/jqueryval")
+
+            </fieldset>
+        </div>
+    </div>
+}
