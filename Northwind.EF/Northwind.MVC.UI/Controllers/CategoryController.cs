@@ -14,7 +14,7 @@ namespace Northwind.MVC.UI.Controllers
     {
         CategoryLogic categoryLogic = new CategoryLogic();
 
-        [HttpGet]
+        // GET: Category
         public ActionResult Index()
         {
             IQueryable<Categories> categories = categoryLogic.GetAll();
@@ -48,15 +48,15 @@ namespace Northwind.MVC.UI.Controllers
         public ActionResult Insert(CategoryView categoryView)
         {
             Categories categoryEntity = new Categories
-                {
-                    CategoryName = categoryView.Name,
-                    Description = categoryView.Description,
-                };
+            {
+                CategoryID = categoryView.Id,
+                CategoryName = categoryView.Name,
+                Description = categoryView.Description,
+            };
 
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("error", "Invalid model");
-                return RedirectToAction("Index");
+                return View(categoryView);
             }
 
             if (categoryEntity.CategoryID == 0)
@@ -69,43 +69,14 @@ namespace Northwind.MVC.UI.Controllers
                 {
                     categoryLogic.Update(categoryEntity);
                 }
-                catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+                catch (System.Data.Entity.Infrastructure.DbUpdateException)
                 {
-                    ModelState.AddModelError("error", e.Message);
                     return RedirectToAction("Index", "Error");
-                    throw new DbUnexpectedValidationException(e.Message);
+                    throw new DbUnexpectedValidationException("An error has occurred!.");
                 }
             }
             return RedirectToAction("Index");
         }
-
-        public ActionResult AddNew(CategoryView categoryView)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    Categories categoryEntity = new Categories
-                    {
-                        CategoryName = categoryView.Name,
-                        Description = categoryView.Description,
-                    };
-
-                    categoryLogic.Add(categoryEntity);
-                    
-                    return RedirectToAction("Index");
-                }
-
-                return View(categoryView);
-            }
-            catch (Exception e)
-            {
-                return RedirectToAction("Index");
-                throw new Exception(e.Message);                
-            }
-        }
-
-        //[HttpPost]
         public ActionResult Delete(int id)
         {
             try
@@ -115,7 +86,9 @@ namespace Northwind.MVC.UI.Controllers
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
+                ModelState.AddModelError("", "Cannot delete because this table is related to another table. Try deleting a new record...");
                 return RedirectToAction("Index", "Error");
+                throw new DbUnexpectedValidationException("An error has occurred!.");
             }
         }
     }

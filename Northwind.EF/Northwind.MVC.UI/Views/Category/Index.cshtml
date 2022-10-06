@@ -6,10 +6,6 @@
 
 <h2>@ViewBag.Title</h2>
 
-<div class="row" style="text-align:right; padding: 5px;">
-    <a href="~/Category/Insert" class="btn btn-primary">New</a>
-</div>
-
 <div class="row">
     <div class="col-md-12">
         <table class="table">
@@ -30,18 +26,18 @@
                         <td>@category.Name</td>
                         <td>@category.Description</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-sm btn-success">@Html.ActionLink("Update", "Insert", "Category")</button>
-                            <button type="button" class="btn btn-sm btn-warning">@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm('Are you sure to delete?')" })</button>
+                            <button id="update" type="button" class="btn btn-sm btn-success">@Html.ActionLink("Update", "Insert", new { id = category.Id })</button>
+
+                            <button id="delete" type="button" class="btn btn-sm btn-warning">@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm('Are you sure to delete?')" })</button>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
 
-        <div class="row">
-            <button type="button" class="btn btn-default">
-                @Html.ActionLink("Insert New Category", "Insert", "Category")
-            </button>
+        <div class="row" style="padding: 5px;">
+            <a href="~/Category/Insert" class="btn btn-primary">Insert New Category</a>
         </div>
+
     </div>
 </div>
