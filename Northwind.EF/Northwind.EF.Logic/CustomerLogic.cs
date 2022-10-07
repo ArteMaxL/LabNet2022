@@ -58,7 +58,10 @@ namespace Northwind.EF.Logic
             var customerUpdate = _context.Customers.Find(customerNew.CustomerID);
 
             customerUpdate.CompanyName = customerNew.CompanyName;
-            customerUpdate.ContactName = customerNew.ContactName;            
+            customerUpdate.ContactName = customerNew.ContactName;
+            customerUpdate.ContactTitle = customerNew.ContactTitle;
+            customerUpdate.City = customerNew.City;
+            customerUpdate.Phone = customerNew.Phone;
 
             _context.SaveChanges();
         }
