@@ -12,42 +12,86 @@ namespace Northwind.EF.Logic
     {
         public override void Add(Categories category)
         {
-            _context.Categories.Add(category);
-            _context.SaveChanges();
+            try
+            {
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            
         }
 
         public override void Delete(int id)
         {
-            var category = _context.Categories.Find(id);           
-            _context.Categories.Remove(category);
+            try
+            {
+                var category = _context.Categories.Find(id);           
+                _context.Categories.Remove(category);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override IQueryable<Categories> GetAll()
         {
-            return _context.Categories;
+            try
+            {
+                return _context.Categories;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public override Categories GetOne(int id)
         {
-            return _context.Categories.Find(id);
+            try
+            {
+                return _context.Categories.Find(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int GetNextId()
         {
-            var category = _context.Categories.Max(c => c.CategoryID);
-            return category;
+            try
+            {
+                var category = _context.Categories.Max(c => c.CategoryID);
+                return category;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override void Update(Categories categoryNew)
         {
-            var categoryUpdate = _context.Categories.Find(categoryNew.CategoryID);
+            try
+            {
+                var categoryUpdate = _context.Categories.Find(categoryNew.CategoryID);
 
-            categoryUpdate.CategoryName = categoryNew.CategoryName;
-            categoryUpdate.Description = categoryNew.Description;
+                categoryUpdate.CategoryName = categoryNew.CategoryName;
+                categoryUpdate.Description = categoryNew.Description;
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

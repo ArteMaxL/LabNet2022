@@ -11,36 +11,71 @@ namespace Northwind.EF.Logic
     {
         public override void Add(Shippers shipper)
         {
-            _context.Shippers.Add(shipper);
-            _context.SaveChanges();
+            try
+            {
+                _context.Shippers.Add(shipper);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override void Delete(int id)
         {
-            var shipper = _context.Shippers.Find(id);
-            _context.Shippers.Remove(shipper);
+            try
+            {
+                var shipper = _context.Shippers.Find(id);
+                _context.Shippers.Remove(shipper);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override IQueryable<Shippers> GetAll()
         {
-            return _context.Shippers;
+            try
+            {
+                return _context.Shippers;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override Shippers GetOne(int id)
         {
-            return _context.Shippers.Find(id);
+            try
+            {
+                return _context.Shippers.Find(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override void Update(Shippers shipperNew)
         {
-            var shipperUpdate = _context.Shippers.Find(shipperNew.ShipperID);
+            try
+            {
+                var shipperUpdate = _context.Shippers.Find(shipperNew.ShipperID);
 
-            shipperUpdate.CompanyName = shipperNew.CompanyName;
-            shipperUpdate.Phone = shipperNew.Phone;
+                shipperUpdate.CompanyName = shipperNew.CompanyName;
+                shipperUpdate.Phone = shipperNew.Phone;
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

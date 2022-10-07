@@ -13,57 +13,106 @@ namespace Northwind.EF.Logic
     {
         public override void Add(Customers customer)
         {
-            var valid = new Validation();
-            var stringId = valid.GenerateStringID();
-            customer.CustomerID = stringId;
+            try
+            {
+                var valid = new Validation();
+                var stringId = valid.GenerateStringID();
+                customer.CustomerID = stringId;
 
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override void Delete(int id)
         {
-            var customer = _context.Customers.Find(id);
-            _context.Customers.Remove(customer);
+            try
+            {
+                var customer = _context.Customers.Find(id);
+                _context.Customers.Remove(customer);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public void DeleteByString(string id)
         {
-            var customer = _context.Customers.Single(c => c.CustomerID == id);
-            _context.Customers.Remove(customer);
+            try
+            {
+                var customer = _context.Customers.Single(c => c.CustomerID == id);
+                _context.Customers.Remove(customer);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override IQueryable<Customers> GetAll()
         {
-            return _context.Customers;
+            try
+            {
+                return _context.Customers;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override Customers GetOne(int id)
         {
-            return _context.Customers.Find(id);
+            try
+            {
+                return _context.Customers.Find(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Customers GetOneString(string id)
         {
-            var customer = _context.Customers.Single(c => c.CustomerID == id);
-            return customer;
+            try
+            {
+                var customer = _context.Customers.Single(c => c.CustomerID == id);
+                return customer;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public override void Update(Customers customerNew)
         {
-            var customerUpdate = _context.Customers.Find(customerNew.CustomerID);
+            try
+            {
+                var customerUpdate = _context.Customers.Find(customerNew.CustomerID);
 
-            customerUpdate.CompanyName = customerNew.CompanyName;
-            customerUpdate.ContactName = customerNew.ContactName;
-            customerUpdate.ContactTitle = customerNew.ContactTitle;
-            customerUpdate.City = customerNew.City;
-            customerUpdate.Phone = customerNew.Phone;
+                customerUpdate.CompanyName = customerNew.CompanyName;
+                customerUpdate.ContactName = customerNew.ContactName;
+                customerUpdate.ContactTitle = customerNew.ContactTitle;
+                customerUpdate.City = customerNew.City;
+                customerUpdate.Phone = customerNew.Phone;
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }
