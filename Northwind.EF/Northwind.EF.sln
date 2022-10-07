@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.UI", "Northwind.EF.UI\Northwind.EF.UI.csproj", "{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.Data", "Northwind.EF.Data\Northwind.EF.Data.csproj", "{CF9F4A42-EB34-4B73-8004-E352E314C59D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.EF.Logic", "Northwind.EF.Logic\Northwind.EF.Logic.csproj", "{8D815BED-537A-4BE2-BFF9-A27904BBB8F1}"
@@ -23,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3129AC9A-D8B4-4DDD-9EC2-2EC8CD70D1CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF9F4A42-EB34-4B73-8004-E352E314C59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF9F4A42-EB34-4B73-8004-E352E314C59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF9F4A42-EB34-4B73-8004-E352E314C59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
