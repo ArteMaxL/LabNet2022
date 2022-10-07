@@ -24,17 +24,10 @@ namespace Northwind.EF.Logic
 
         public override void Delete(int id)
         {
-            try
-            {
                 var shipper = _context.Shippers.Find(id);
                 _context.Shippers.Remove(shipper);
 
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
         }
 
         public override IQueryable<Shippers> GetAll()

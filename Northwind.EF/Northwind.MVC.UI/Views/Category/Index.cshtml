@@ -28,7 +28,7 @@
                         <td class="text-center">
                             <button id="update" type="button" class="btn btn-sm btn-success">@Html.ActionLink("Update", "Insert", new { id = category.Id })</button>
 
-                            <button id="delete" type="button" class="btn btn-sm btn-warning">@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm('Are you sure to delete?')" })</button>
+                            <button id="delete" type="button" class="btn btn-sm btn-warning">@Html.ActionLink("Delete", "Delete", new { id = category.Id }, new { onclick = "return confirm('Are you sure you want to delete?')" })</button>
                         </td>
                     </tr>
                 }

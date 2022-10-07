@@ -35,7 +35,7 @@ namespace Northwind.EF.Logic
                 var customer = _context.Customers.Find(id);
                 _context.Customers.Remove(customer);
 
-                _context.SaveChanges();
+                _context.SaveChanges();    
             }
             catch (Exception e)
             {
@@ -45,17 +45,10 @@ namespace Northwind.EF.Logic
 
         public void DeleteByString(string id)
         {
-            try
-            {
                 var customer = _context.Customers.Single(c => c.CustomerID == id);
                 _context.Customers.Remove(customer);
 
                 _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
         }
 
         public override IQueryable<Customers> GetAll()

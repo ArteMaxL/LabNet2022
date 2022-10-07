@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,17 +27,12 @@ namespace Northwind.EF.Logic
 
         public override void Delete(int id)
         {
-            try
-            {
-                var category = _context.Categories.Find(id);           
-                _context.Categories.Remove(category);
+            var category = _context.Categories.Find(id);
 
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            _context.Categories.Remove(category);
+
+            _context.SaveChanges();
+              
         }
 
         public override IQueryable<Categories> GetAll()
