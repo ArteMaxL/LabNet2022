@@ -17,16 +17,7 @@ namespace Northwind.MVC.UI.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            IQueryable<Categories> categories = categoryLogic.GetAll();
-
-            /* var lst = from c in categories
-                      select new CategoryView
-                      {
-                          Id = c.CategoryID,
-                          Name = c.CategoryName,
-                          Description = c.Description,
-                      };
-            */
+            IQueryable<Categories> categories = categoryLogic.GetAll();                       
 
             IQueryable<CategoryView> categoryViews = categories.Select(c => new CategoryView
             {
