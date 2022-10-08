@@ -16,7 +16,7 @@ namespace Northwind.API.Controllers
     {
         ShipperLogic shipperLogic = new ShipperLogic();
 
-        // GET: api/Category
+        // GET: api/shipper
         public IHttpActionResult Get()
         {
             try
@@ -38,7 +38,7 @@ namespace Northwind.API.Controllers
             }
         }
 
-        // GET: api/Category
+        // GET: api/shipper
         public IHttpActionResult Get(int id)
         {
             try
@@ -68,7 +68,7 @@ namespace Northwind.API.Controllers
             }
         }
 
-        // POST: api/category 
+        // POST: api/shipper 
         public IHttpActionResult Post([FromBody] ShipperView shipperView)
         {
             if (ModelState.IsValid)
@@ -95,7 +95,7 @@ namespace Northwind.API.Controllers
             }
         }
 
-        // PUT: api/category
+        // PUT: api/shipper
         public IHttpActionResult Put([FromBody] ShipperView shipperView)
         {
             if (ModelState.IsValid)
@@ -131,7 +131,7 @@ namespace Northwind.API.Controllers
             }
         }
 
-        // DELETE: api/category
+        // DELETE: api/shipper
         public IHttpActionResult Delete(int id)
         {
             try

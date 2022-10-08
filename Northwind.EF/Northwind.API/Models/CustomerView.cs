@@ -8,20 +8,18 @@ namespace Northwind.API.Models
 {
     public class CustomerView
     {
-        public string Id { get; set; }
+        public string CustomerID { get; set; }
 
         [Required(ErrorMessage = "Name is Required!")]
         [StringLength(40, ErrorMessage = "Max 40 characters!")]       
         public string CompanyName { get; set; }
 
-        [Required(ErrorMessage = "Contact Name is Required!")]
         [StringLength(30, ErrorMessage = "Max 30 characters!")]
         public string ContactName { get; set; }
 
         [StringLength(30, ErrorMessage = "Max 30 characters!")]
         public string ContactTitle { get; set; }
 
-        [Required(ErrorMessage = "City is Required!")]
         [StringLength(15, ErrorMessage = "Max 15 characters!")]
         public string City { get; set; }
 
