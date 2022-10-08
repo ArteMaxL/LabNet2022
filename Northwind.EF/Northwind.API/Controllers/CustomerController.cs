@@ -143,7 +143,7 @@ namespace Northwind.API.Controllers
             }
         }
 
-        // DELETE: api/customer
+        // DELETE: api/customer       
         public IHttpActionResult Delete(string id)
         {
             try
