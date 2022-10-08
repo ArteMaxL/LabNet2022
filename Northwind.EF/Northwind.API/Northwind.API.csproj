@@ -225,12 +225,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\FakeStore\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Category\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\FakeStore\" />
     <Folder Include="Views\Shipper\" />
   </ItemGroup>
   <ItemGroup>

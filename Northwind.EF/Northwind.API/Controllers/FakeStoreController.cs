@@ -17,9 +17,9 @@ namespace Northwind.API.Controllers
         // GET: FakeStore
         public async Task<ActionResult> Index()
         {
-            IQueryable<FakeStoreAPI> products = await fakeStoreLogic.GetProducts();
+            List<FakeStoreAPI> products = await fakeStoreLogic.GetProducts();
 
-            IQueryable<FakeStoreView> productView = products.Select(p => new FakeStoreView
+            List<FakeStoreView> productView = products.Select(p => new FakeStoreView
             {
                 Id = p.Id,
                 Title = p.Title,
@@ -27,7 +27,7 @@ namespace Northwind.API.Controllers
                 Category = p.Category,
                 Description = p.Description,
                 Image = p.Image,
-            });
+            }).ToList();
 
             return View(productView);
         }

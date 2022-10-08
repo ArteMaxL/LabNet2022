@@ -11,7 +11,7 @@ namespace Northwind.EF.Logic
 {
     public class FakeStoreLogic
     {
-        public async Task<IQueryable<FakeStoreAPI>> GetProducts()
+        public async Task<List<FakeStoreAPI>> GetProducts()
         {
             string apiUrl = "https://fakestoreapi.com/products";
             HttpClient httpClient = new HttpClient();
@@ -20,8 +20,8 @@ namespace Northwind.EF.Logic
             {
                 string responseJson = await httpClient.GetStringAsync(apiUrl);
 
-                IQueryable<FakeStoreAPI> products = JsonConvert.
-                    DeserializeObject<IQueryable<FakeStoreAPI>>(responseJson);
+                List<FakeStoreAPI> products = JsonConvert.
+                    DeserializeObject<List<FakeStoreAPI>>(responseJson);
 
                 return products;
 
