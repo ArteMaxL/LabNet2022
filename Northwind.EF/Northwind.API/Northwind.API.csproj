@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FakeStoreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShipperController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,7 @@
     </Compile>
     <Compile Include="Models\CategoryView.cs" />
     <Compile Include="Models\CustomerView.cs" />
+    <Compile Include="Models\FakeStoreView.cs" />
     <Compile Include="Models\ShipperView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -228,6 +230,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Category\" />
     <Folder Include="Views\Customer\" />
+    <Folder Include="Views\FakeStore\" />
     <Folder Include="Views\Shipper\" />
   </ItemGroup>
   <ItemGroup>
