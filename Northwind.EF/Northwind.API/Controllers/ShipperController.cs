@@ -12,25 +12,25 @@ using System.Web.Mvc;
 
 namespace Northwind.API.Controllers
 {
-    public class CategoryController : ApiController
+    public class ShipperController : ApiController
     {
-        CategoryLogic categoryLogic = new CategoryLogic();
+        ShipperLogic shipperLogic = new ShipperLogic();
 
         // GET: api/Category
         public IHttpActionResult Get()
         {
             try
             {
-                IQueryable<CategoryView> categoryView = categoryLogic
+                IQueryable<ShipperView> shipperView = shipperLogic
                     .GetAll()
-                    .Select(c => new CategoryView
-                {
-                    CategoryID = c.CategoryID,
-                    CategoryName = c.CategoryName,
-                    Description = c.Description,
-                });
+                    .Select(s => new ShipperView
+                    {
+                        ShipperID = s.ShipperID,
+                        CompanyName = s.CompanyName,
+                        Phone = s.Phone,
+                    });
 
-                return Ok(categoryView);
+                return Ok(shipperView);
             }
             catch (Exception ex)
             {
@@ -43,23 +43,23 @@ namespace Northwind.API.Controllers
         {
             try
             {
-                Categories categoryEntity = categoryLogic.GetOne(id);
+                Shippers shipperEntity = shipperLogic.GetOne(id);
 
-                if (categoryEntity != null)
+                if (shipperEntity != null)
                 {
-                    CategoryView categoryView = new CategoryView
+                    ShipperView shipperView = new ShipperView
                     {
-                        CategoryID = categoryEntity.CategoryID,
-                        CategoryName = categoryEntity.CategoryName,
-                        Description = categoryEntity.Description,
+                        ShipperID = shipperEntity.ShipperID,
+                        CompanyName = shipperEntity.CompanyName,
+                        Phone = shipperEntity.Phone,
                     };
 
-                    return Ok(categoryView);
+                    return Ok(shipperView);
                 }
                 else
                 {
                     return Content(HttpStatusCode.NotFound,
-                        $"The category with the ID: '{id}' doesn't exist!.");
+                        $"The shipper with the ID: '{id}' doesn't exist!.");
                 }
             }
             catch (Exception ex)
@@ -69,20 +69,20 @@ namespace Northwind.API.Controllers
         }
 
         // POST: api/category 
-        public IHttpActionResult Post([FromBody] CategoryView categoryView)
+        public IHttpActionResult Post([FromBody] ShipperView shipperView)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Categories categoryEntity = new Categories
+                    Shippers shipperEntity = new Shippers
                     {
-                        CategoryName = categoryView.CategoryName,
-                        Description = categoryView.Description,
+                        CompanyName = shipperView.CompanyName,
+                        Phone = shipperView.Phone,
                     };
 
-                    categoryLogic.Add(categoryEntity);
-                    return Ok(categoryEntity);
+                    shipperLogic.Add(shipperEntity);
+                    return Ok(shipperEntity);
                 }
                 catch (Exception ex)
                 {
@@ -96,23 +96,23 @@ namespace Northwind.API.Controllers
         }
 
         // PUT: api/category
-        public IHttpActionResult Put([FromBody] CategoryView categoryView)
+        public IHttpActionResult Put([FromBody] ShipperView shipperView)
         {
             if (ModelState.IsValid)
             {
-                if (categoryLogic.GetOne(categoryView.CategoryID) != null)
+                if (shipperLogic.GetOne(shipperView.ShipperID) != null)
                 {
                     try
                     {
-                        Categories categoryEntity = new Categories
+                        Shippers shipperEntity = new Shippers
                         {
-                            CategoryID = categoryView.CategoryID,
-                            CategoryName = categoryView.CategoryName,
-                            Description = categoryView.Description,
+                            ShipperID = shipperView.ShipperID,
+                            CompanyName = shipperView.CompanyName,
+                            Phone = shipperView.Phone,
                         };
 
-                        categoryLogic.Update(categoryEntity);
-                        return Ok(categoryEntity);
+                        shipperLogic.Update(shipperEntity);
+                        return Ok(shipperEntity);
                     }
                     catch (Exception ex)
                     {
@@ -122,7 +122,7 @@ namespace Northwind.API.Controllers
                 else
                 {
                     return Content(HttpStatusCode.NotFound,
-                            $"The category with the ID: '{categoryView.CategoryID}' doesn't exist!.");
+                            $"The category with the ID: '{shipperView.ShipperID}' doesn't exist!.");
                 }
             }
             else
@@ -136,15 +136,15 @@ namespace Northwind.API.Controllers
         {
             try
             {
-                if (categoryLogic.GetOne(id) != null)
+                if (shipperLogic.GetOne(id) != null)
                 {
-                    categoryLogic.Delete(id);
-                    return Content(HttpStatusCode.Accepted, $"Category with the ID: {id} was deleted!.");
+                    shipperLogic.Delete(id);
+                    return Content(HttpStatusCode.Accepted, $"Shipper with the ID: {id} was deleted!.");
                 }
                 else
                 {
                     return Content(HttpStatusCode.NotFound,
-                            $"The category with the ID: '{id}' doesn't exist!.");
+                            $"The shipper with the ID: '{id}' doesn't exist!.");
                 }
             }
             catch (Exception ex)

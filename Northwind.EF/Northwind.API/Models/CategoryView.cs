@@ -8,11 +8,11 @@ namespace Northwind.API.Models
 {
     public class CategoryView
     {
-        public int Id { get; set; }
+        public int CategoryID { get; set; }
 
         [Required(ErrorMessage = "Name is Required!")]
         [StringLength(15, ErrorMessage = "Max 15 characters!")]
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
 
         [StringLength(255, ErrorMessage = "Max 255 characters!")]
         public string Description { get; set; }

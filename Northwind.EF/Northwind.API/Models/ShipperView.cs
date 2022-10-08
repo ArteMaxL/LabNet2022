@@ -8,11 +8,11 @@ namespace Northwind.API.Models
 {
     public class ShipperView
     {
-        public int Id { get; set; }
+        public int ShipperID { get; set; }
 
         [Required(ErrorMessage = "Name is Required!")]
         [StringLength(40, ErrorMessage = "Max 40 characters!")]
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "Phone Number is Required!")]
         [Phone(ErrorMessage = "Enter a valid phone number!")]
