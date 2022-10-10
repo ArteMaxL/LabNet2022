@@ -82,7 +82,8 @@ namespace Northwind.API.Controllers
                     };
 
                     shipperLogic.Add(shipperEntity);
-                    return Ok(shipperEntity);
+
+                    return Content(HttpStatusCode.Created, shipperEntity);
                 }
                 catch (Exception ex)
                 {

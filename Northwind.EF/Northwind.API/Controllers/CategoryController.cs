@@ -82,7 +82,8 @@ namespace Northwind.API.Controllers
                     };
 
                     categoryLogic.Add(categoryEntity);
-                    return Ok(categoryEntity);
+                                        
+                    return Content(HttpStatusCode.Created, categoryEntity);
                 }
                 catch (Exception ex)
                 {

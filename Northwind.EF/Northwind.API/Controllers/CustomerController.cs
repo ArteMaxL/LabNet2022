@@ -91,7 +91,8 @@ namespace Northwind.API.Controllers
                     };
 
                     customerLogic.Add(customerEntity);
-                    return Ok(customerEntity);
+
+                    return Content(HttpStatusCode.Created, customerEntity);
                 }
                 catch (Exception ex)
                 {
