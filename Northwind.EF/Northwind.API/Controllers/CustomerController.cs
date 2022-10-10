@@ -162,7 +162,7 @@ namespace Northwind.API.Controllers
             }
             catch (Exception ex)
             {
-                return Content(HttpStatusCode.InternalServerError, ex.Message);
+                return Content(HttpStatusCode.Forbidden, ex.Message);
             }
         }
     }
