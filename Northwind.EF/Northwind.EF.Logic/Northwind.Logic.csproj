@@ -7,8 +7,8 @@
     <ProjectGuid>{8D815BED-537A-4BE2-BFF9-A27904BBB8F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Northwind.EF.Logic</RootNamespace>
-    <AssemblyName>Northwind.EF.Logic</AssemblyName>
+    <RootNamespace>Northwind.Logic</RootNamespace>
+    <AssemblyName>Northwind.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -64,17 +64,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.EF.Common\Northwind.EF.Common.csproj">
+    <ProjectReference Include="..\Northwind.EF.Common\Northwind.Common.csproj">
       <Project>{9ed0324b-1a68-4242-b4b2-c89776c7b448}</Project>
-      <Name>Northwind.EF.Common</Name>
+      <Name>Northwind.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.EF.Data\Northwind.EF.Data.csproj">
+    <ProjectReference Include="..\Northwind.EF.Data\Northwind.Data.csproj">
       <Project>{cf9f4a42-eb34-4b73-8004-e352e314c59d}</Project>
-      <Name>Northwind.EF.Data</Name>
+      <Name>Northwind.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.EF.Entities\Northwind.EF.Entities.csproj">
+    <ProjectReference Include="..\Northwind.EF.Entities\Northwind.Entities.csproj">
       <Project>{2e7de206-4cd5-460a-95a8-3414779ec59c}</Project>
-      <Name>Northwind.EF.Entities</Name>
+      <Name>Northwind.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

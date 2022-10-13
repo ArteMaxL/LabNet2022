@@ -265,17 +265,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.EF.Common\Northwind.EF.Common.csproj">
+    <ProjectReference Include="..\Northwind.EF.Common\Northwind.Common.csproj">
       <Project>{9ed0324b-1a68-4242-b4b2-c89776c7b448}</Project>
-      <Name>Northwind.EF.Common</Name>
+      <Name>Northwind.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.EF.Entities\Northwind.EF.Entities.csproj">
+    <ProjectReference Include="..\Northwind.EF.Entities\Northwind.Entities.csproj">
       <Project>{2e7de206-4cd5-460a-95a8-3414779ec59c}</Project>
-      <Name>Northwind.EF.Entities</Name>
+      <Name>Northwind.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.EF.Logic\Northwind.EF.Logic.csproj">
+    <ProjectReference Include="..\Northwind.EF.Logic\Northwind.Logic.csproj">
       <Project>{8d815bed-537a-4be2-bff9-a27904bbb8f1}</Project>
-      <Name>Northwind.EF.Logic</Name>
+      <Name>Northwind.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{69BB83FE-E0A7-4755-AA3E-FB18BB44E828}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Northwind.EF.CommonTests</RootNamespace>
-    <AssemblyName>Northwind.EF.CommonTests</AssemblyName>
+    <RootNamespace>Northwind.CommonTests</RootNamespace>
+    <AssemblyName>Northwind.CommonTests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.EF.Common\Northwind.EF.Common.csproj">
+    <ProjectReference Include="..\Northwind.EF.Common\Northwind.Common.csproj">
       <Project>{9ED0324B-1A68-4242-B4B2-C89776C7B448}</Project>
-      <Name>Northwind.EF.Common</Name>
+      <Name>Northwind.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
