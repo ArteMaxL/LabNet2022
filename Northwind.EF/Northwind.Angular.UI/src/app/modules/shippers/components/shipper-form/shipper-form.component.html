@@ -27,11 +27,11 @@
         </div>
         <div class="form-group">
             <label class="col-form-label"> Phone </label>
-            <input formControlName="Phone" type="text" placeholder="(000)-000-0000" mask="(000)-000-0000-000-0000" class="form-control">
+            <input formControlName="Phone" type="text" placeholder="(000) 000-0000" mask="(000) 000-0000" class="form-control">
             <span class="form-text text-danger"
                   *ngIf="notValidField('Phone')">
                   <br>
-                  <strong> Phone Number min: {{minLengthPhone}}, max: 17 only numbers. </strong>
+                  <strong> Phone number must have 10 numbers. </strong>
             </span>
         </div>
         <br>
