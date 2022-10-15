@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiShippers: "https://localhost:44314/api/"
+  apiNorthwind: "https://localhost:44314/api/",
 };
 
 /*

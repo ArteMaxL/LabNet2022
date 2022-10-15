@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { Observable, Subject } from 'rxjs';
-import { ShipperModel } from '../models/ShipperModel';
+import { CategoryModel } from '../models/CategoryModel';
 
 
 import { map } from 'rxjs/operators'
@@ -15,38 +15,38 @@ export class DbConnectionService {
 
   startedEditing = new Subject<number>();
 
-  endpoint: string = 'shipper'
+  endpoint: string = 'category'
   url = environment.apiNorthwind + this.endpoint;
 
   constructor(private http: HttpClient) { }
 
-  public getAllShippers(): Observable<Array<ShipperModel>> {
+  public getAllCategories(): Observable<Array<CategoryModel>> {
 
-    return this.http.get<Array<ShipperModel>>(this.url);
+    return this.http.get<Array<CategoryModel>>(this.url);
   }
 
-  public getOneShipper(id: number): Observable<ShipperModel>{
+  public getOneCategory(id: number): Observable<CategoryModel>{
 
-    return this.http.get<ShipperModel>(this.url + `/${id}`);
+    return this.http.get<CategoryModel>(this.url + `/${id}`);
   }
 
-  public addShipper(shipper: ShipperModel){
+  public addCategory(category: CategoryModel){
 
-    return this.http.post(this.url, shipper)
+    return this.http.post(this.url, category)
     .pipe(map((res: any)=>{
       return res;
     }));
   }
 
-  public updateShipper(shipper: ShipperModel, id: number): Observable<ShipperModel> {
+  public updateCategory(category: CategoryModel, id: number): Observable<CategoryModel> {
 
-    return this.http.put<ShipperModel>(this.url + "/" + id, shipper)
+    return this.http.put<CategoryModel>(this.url + "/" + id, category)
     .pipe(map((res:any)=> {
       return res;
     }));
   }
 
-  public deleteShipper(id: number): Observable<any> {
+  public deleteCategory(id: number): Observable<any> {
 
     return this.http.delete(this.url + "/" + id);
   }

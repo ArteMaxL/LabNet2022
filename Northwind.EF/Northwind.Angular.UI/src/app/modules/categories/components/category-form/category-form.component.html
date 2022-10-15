@@ -1,1 +1,71 @@
-<p>category-form works!</p>
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+      <h1 class="text-white"> Categories </h1>
+      <div class="d-flex">
+        <button type="button" class="btn btn-warning" (click)="openModal(template)" (click)="clickBtnAdd()"> Add Category </button>
+      </div>
+  </div>
+</nav>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"><strong> Category Form </strong></h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="formValue" #form>
+
+        <div class="form-group">
+            <label class="col-form-label"> Category Name </label>
+            <input formControlName="CategoryName" type="text" placeholder="xxxx"  class="form-control" >
+            <span class="form-text text-danger"
+                  *ngIf="notValidField('CategoryName')">
+                  <br>
+              <strong> Category Name min: {{minLengthCategoryName}}, max: {{maxLengthCategoryName}} characters. </strong>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label"> Description </label>
+            <input formControlName="Description" type="text" class="form-control">
+            <span class="form-text text-danger"
+                  *ngIf="notValidField('Description')">
+                  <br>
+                  <strong> Description max: {{maxLengthDescription}} characters. </strong>
+            </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="modalRef.hide()"> Back </button>
+        <button type="submit" *ngIf="showAdd" class="btn btn-danger mx-1" (click)="insertCategoryDetails()"> Add </button>
+        <button type="submit" *ngIf="showUpdate" class="btn btn-danger mx-1" (click)="updateCategoryDetails()" [disabled]="formValue.pristine"> Save </button>
+
+    </form>
+    </div>
+
+</ng-template>
+
+<table class="table table-dark table-hover mt-4">
+  <thead>
+    <tr>
+      <th scope="col"> Category ID </th>
+      <th scope="col" class=""> Category Name </th>
+      <th scope="col"> Description </th>
+      <th scope="col"> Action </th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <h2 *ngIf="isLoading"> Loading... </h2>
+      <tr *ngFor="let category of categories">
+
+        <th scope="row">{{category.CategoryID}}</th>
+        <td>{{category.CategoryName}}</td>
+        <td>{{category.Description}}</td>
+
+        <td>
+            <button (click)="onEdit(category)" type="button" type="button" class="btn btn-success" (click)="openModal(template)"> Update </button>
+            <button type="button" class="btn btn-danger mx-3" (click)="deleteCategory(category)"> Delete </button>
+        </td>
+      </tr>
+    </tbody>
+</table>
