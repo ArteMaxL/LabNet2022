@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-dark">
   <div class="container-fluid">
-      <h1 class="text-white">Shippers Table | Editor</h1>
+      <h1 class="text-white"> Shippers </h1>
       <div class="d-flex">
         <button type="button" class="btn btn-warning" (click)="openModal(template)" (click)="clickBtnAdd()">Add Shipper</button>
       </div>
@@ -17,8 +17,8 @@
       <form [formGroup]="formValue" #form>
 
         <div class="form-group">
-            <label class="col-form-label">Company Name</label>
-            <input formControlName="CompanyName" type="text" class="form-control" >
+            <label class="col-form-label"> Company Name </label>
+            <input formControlName="CompanyName" type="text" placeholder="xxxx"  class="form-control" >
             <span class="form-text text-danger"
                   *ngIf="notValidField('CompanyName')">
                   <br>
@@ -26,12 +26,12 @@
             </span>
         </div>
         <div class="form-group">
-            <label class="col-form-label" placeholder="(000)-000-0000">Phone</label>
-            <input formControlName="Phone" type="text" class="form-control">
+            <label class="col-form-label"> Phone </label>
+            <input formControlName="Phone" type="text" placeholder="(000)-000-0000" mask="(000)-000-0000-000-0000" class="form-control">
             <span class="form-text text-danger"
                   *ngIf="notValidField('Phone')">
                   <br>
-                  <strong> Phone Number min: {{minLengthPhone}}, max: {{maxLengthPhone}} only numbers. </strong>
+                  <strong> Phone Number min: {{minLengthPhone}}, max: 17 only numbers. </strong>
             </span>
         </div>
         <br>

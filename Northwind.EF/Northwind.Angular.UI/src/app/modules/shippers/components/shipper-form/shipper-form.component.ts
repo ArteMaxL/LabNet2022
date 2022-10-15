@@ -6,8 +6,8 @@ import { DbConnectionService } from '../../services/db-connection.service';
 import { ShipperModel } from '../../models/ShipperModel';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-shipper-form',
@@ -105,7 +105,7 @@ export class ShipperFormComponent implements OnInit {
     });
   }
 
-  onEdit(shipper: any){
+  onEdit(shipper: ShipperModel){
 
     this.showAdd = false;
     this.showUpdate = true;
@@ -137,19 +137,39 @@ export class ShipperFormComponent implements OnInit {
     });
   }
 
-  deleteShipper(shipper: any){
-
-    if(window.confirm('Are you sure you want to delete?')){
-      this.apiService.deleteShipper(shipper.ShipperID)
-      .subscribe(res =>{
-        this.toastrService.success('Shipper successfully deleted!')
-        this.getShippers();
-      },
-      err => {
-        this.err = err.message
-        this.toastrService.error('Error trying to delete Shipper - ' + err.message)
-      });
-    }
+  deleteShipper(shipper: ShipperModel) {
+    Swal.fire({
+      title: 'Confirm',
+      html: `Are you sure you want to delete?: <b>${ shipper.CompanyName }</b>?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'CONFIRM',
+      cancelButtonText: 'CANCEL'
+    }).then((result:any) => {
+      if (result.value) {
+        Swal.fire({
+            title: 'Please wait...',
+            showConfirmButton: false,
+        });
+        Swal.showLoading();
+        this.apiService.deleteShipper(shipper.ShipperID).subscribe({
+          next: res => {
+            this.getShippers();
+            Swal.close();
+            setTimeout(function() {
+            }, 4000);
+          },
+          error: err => {
+            Swal.close();
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Error'
+            });
+          }
+        });
+      }
+    });
   }
 
   clickBtnAdd(){
