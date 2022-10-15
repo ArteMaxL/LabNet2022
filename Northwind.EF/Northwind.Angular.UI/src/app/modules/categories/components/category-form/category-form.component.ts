@@ -56,7 +56,7 @@ export class CategoryFormComponent implements OnInit {
     this.formValue = this.fb.group({
       CategoryName : ['', [Validators.required, Validators.minLength(this.minLengthCategoryName),
          Validators.maxLength(this.maxLengthCategoryName)]],
-      Description : ['', [Validators.required, Validators.maxLength(this.maxLengthDescription)]]
+      Description : ['', [Validators.maxLength(this.maxLengthDescription)]]
     })
   }
 

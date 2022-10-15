@@ -2,7 +2,7 @@
   <div class="container-fluid">
       <h1 class="text-white"> Categories </h1>
       <div class="d-flex">
-        <button type="button" class="btn btn-warning" (click)="openModal(template)" (click)="clickBtnAdd()"> Add Category </button>
+        <button type="button" class="btn btn-primary" (click)="openModal(template)" (click)="clickBtnAdd()"> Add Category </button>
       </div>
   </div>
 </nav>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label class="col-form-label"> Description </label>
-            <input formControlName="Description" type="text" class="form-control">
+            <textarea formControlName="Description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             <span class="form-text text-danger"
                   *ngIf="notValidField('Description')">
                   <br>
@@ -44,7 +44,7 @@
 
 </ng-template>
 
-<table class="table table-dark table-hover mt-4">
+<table class="table table-hover mt-4">
   <thead>
     <tr>
       <th scope="col"> Category ID </th>
