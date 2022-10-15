@@ -1,6 +1,6 @@
 export class ShipperModel
 {
-  ShipperId: number;
+  ShipperID: number;
   CompanyName: string;
   Phone: string;
 }

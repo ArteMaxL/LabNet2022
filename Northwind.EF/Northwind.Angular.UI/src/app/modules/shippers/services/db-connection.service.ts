@@ -40,7 +40,7 @@ export class DbConnectionService {
 
   public updateShipper(shipper: ShipperModel, id: number): Observable<ShipperModel> {
 
-    return this.http.put<any>(this.url + "/" + id, shipper)
+    return this.http.put<ShipperModel>(this.url + "/" + id, shipper)
     .pipe(map((res:any)=> {
       return res;
     }));

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DbConnectionService } from '../../services/db-connection.service';
 
-
 import { ShipperModel } from '../../models/ShipperModel';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -22,12 +21,19 @@ export class ShipperFormComponent implements OnInit {
   isLoading = false;
   modalRef: BsModalRef;
   formValue: FormGroup;
-  shipperObj : ShipperModel = new ShipperModel;
+  shipperModel : ShipperModel = new ShipperModel;
 
-  mostrarAdd!: boolean;
-  mostrarUpdate!: boolean;
+  showAdd!: boolean;
+  showUpdate!: boolean;
 
-  public listShippers: Array<ShipperModel> = [];
+  minLengthCompanyName: number = 4;
+  maxLengthCompanyName: number = 40;
+
+  minLengthPhone: number = 8;
+  maxLengthPhone: number = 24;
+
+
+  public shippers: Array<ShipperModel> = [];
 
   constructor(private httpclient:     HttpClient,
               private apiService:     DbConnectionService,
@@ -39,10 +45,10 @@ export class ShipperFormComponent implements OnInit {
     this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
   }
 
-  notValidField(campo: string){
+  notValidField(field: string){
 
-    return this.formValue.controls[campo].errors
-        && this.formValue.controls[campo].touched;
+    return this.formValue.controls[field].errors
+        && this.formValue.controls[field].touched;
   }
 
   ngOnInit() {
@@ -50,8 +56,10 @@ export class ShipperFormComponent implements OnInit {
     this.getShippers();
 
     this.formValue = this.fb.group({
-      companyName : ['', [Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-      phone : ['', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]]
+      CompanyName : ['', [Validators.required, Validators.minLength(this.minLengthCompanyName),
+         Validators.maxLength(this.maxLengthCompanyName)]],
+      Phone : ['', [Validators.required, Validators.minLength(this.minLengthPhone),
+         Validators.maxLength(this.maxLengthPhone)]]
     })
   }
 
@@ -62,14 +70,14 @@ export class ShipperFormComponent implements OnInit {
     .subscribe(res => {
 
       this.isLoading = false;
-      this.listShippers = res;
+      this.shippers = res;
 
     },
     err => {
 
       this.isLoading = false;
       this.err = err.message
-      this.toastrService.error('Error al intentar obtener listado de Shippers - ' + err.message)
+      this.toastrService.error('Error getting list - ' + err.message)
     });
   }
 
@@ -80,31 +88,29 @@ export class ShipperFormComponent implements OnInit {
       return;
     }
 
-    this.shipperObj.CompanyName = this.formValue.value.CompanyName;
-    this.shipperObj.Phone = this.formValue.value.Phone;
+    this.shipperModel.CompanyName = this.formValue.value.CompanyName;
+    this.shipperModel.Phone = this.formValue.value.Phone;
 
-    this.apiService.addShipper(this.shipperObj)
+    this.apiService.addShipper(this.shipperModel)
     .subscribe(res =>{
 
       this.formValue.reset();
-      this.toastrService.success('Se cargó correctamente el Shipper')
+      this.toastrService.success('New Shipper added!')
       this.getShippers();
 
     },
     err => {
       this.err = err.message
-      this.toastrService.error('Error al cargar el Shipper - ' + err.message)
+      this.toastrService.error('Error to create a new Shipper - ' + err.message)
     });
   }
 
-
-
   onEdit(shipper: any){
 
-    this.mostrarAdd = false;
-    this.mostrarUpdate = true;
+    this.showAdd = false;
+    this.showUpdate = true;
 
-    this.shipperObj.ShipperId = shipper.ShipperId;
+    this.shipperModel.ShipperID = shipper.ShipperID;
     this.formValue.controls['CompanyName'].setValue(shipper.CompanyName)
     this.formValue.controls['Phone'].setValue(shipper.Phone)
   }
@@ -116,41 +122,39 @@ export class ShipperFormComponent implements OnInit {
       return;
     }
 
-    this.shipperObj.CompanyName = this.formValue.value.CompanyName;
-    this.shipperObj.Phone = this.formValue.value.Phone;
+    this.shipperModel.CompanyName = this.formValue.value.CompanyName;
+    this.shipperModel.Phone = this.formValue.value.Phone;
 
-    this.apiService.updateShipper(this.shipperObj, this.shipperObj.ShipperId)
+    this.apiService.updateShipper(this.shipperModel, this.shipperModel.ShipperID)
     .subscribe( res =>{
-      this.toastrService.success('Se actualizaron correctamente los datos')
+      this.toastrService.success('Successful Shippers update.')
       this.getShippers();
 
     },
     err =>{
       this.err = err.message
-      this.toastrService.error('Error al intentar actualizar los datos - ' + err.message)
+      this.toastrService.error('Update error - ' + err.message)
     });
   }
 
   deleteShipper(shipper: any){
 
-    if(window.confirm('¿Está seguro que desea eliminar el registro?')){
-      this.apiService.deleteShipper(shipper.shipperID)
+    if(window.confirm('Are you sure you want to delete?')){
+      this.apiService.deleteShipper(shipper.ShipperID)
       .subscribe(res =>{
-        this.toastrService.success('Se eliminó correctamente el Shipper')
+        this.toastrService.success('Shipper successfully deleted!')
         this.getShippers();
       },
       err => {
         this.err = err.message
-        this.toastrService.error('Error al intentar eliminar el Shipper - ' + err.message)
+        this.toastrService.error('Error trying to delete Shipper - ' + err.message)
       });
     }
   }
 
   clickBtnAdd(){
     this.formValue.reset();
-    this.mostrarAdd = true;
-    this.mostrarUpdate = false;
+    this.showAdd = true;
+    this.showUpdate = false;
   }
-
 }
-

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-dark">
   <div class="container-fluid">
-      <h1>Shippers List | Editor</h1>
+      <h1>Shippers Table | Editor</h1>
       <div class="d-flex">
         <button type="button" class="btn btn-warning" (click)="openModal(template)" (click)="clickBtnAdd()">Add Shipper</button>
       </div>
@@ -10,11 +10,11 @@
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left"><strong>Shipper Form</strong></h4>
-        <button type="button" class="btn-close"  aria-label="Close" (click)="modalRef.hide()"></button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button>
     </div>
     <div class="modal-body">
 
-      <form [formGroup]="formValue" #formulario>
+      <form [formGroup]="formValue" #form>
 
         <div class="form-group">
             <label class="col-form-label">Company Name</label>
@@ -22,22 +22,22 @@
             <span class="form-text text-danger"
                   *ngIf="notValidField('CompanyName')">
                   <br>
-              El Company Name no puede tener menos de 3 letras o tener más de 40 letras.
+              <strong> Company Name min: {{minLengthCompanyName}}, max: {{maxLengthCompanyName}} characters. </strong>
             </span>
         </div>
         <div class="form-group">
             <label class="col-form-label" placeholder="(000)-000-0000">Phone</label>
-            <input formControlName="phone" type="text" class="form-control" mask="(000) 000-0000">
+            <input formControlName="Phone" type="text" class="form-control">
             <span class="form-text text-danger"
-                  *ngIf="notValidField('phone')">
+                  *ngIf="notValidField('Phone')">
                   <br>
-              El Phone no puede tener menos de 10 números.
+                  <strong> Phone Number min: {{minLengthPhone}}, max: {{maxLengthPhone}} only numbers. </strong>
             </span>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Back</button>
-        <button type="submit" *ngIf="mostrarAdd" class="btn btn-danger mx-1" (click)="insertShipperDetails()">Add</button>
-        <button type="submit" *ngIf="mostrarUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()" [disabled]="formValue.pristine">Save</button>
+        <button type="submit" class="btn btn-primary" (click)="modalRef.hide()"> Back </button>
+        <button type="submit" *ngIf="showAdd" class="btn btn-danger mx-1" (click)="insertShipperDetails()"> Add </button>
+        <button type="submit" *ngIf="showUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()" [disabled]="formValue.pristine"> Save </button>
 
     </form>
     </div>
@@ -55,16 +55,16 @@
   </thead>
 
     <tbody>
-      <h2 *ngIf="isLoading">Loading...</h2>
-      <tr *ngFor="let shipper of listShippers">
+      <h2 *ngIf="isLoading"> Loading... </h2>
+      <tr *ngFor="let shipper of shippers">
 
-        <th scope="row">{{shipper.ShipperId}}</th>
+        <th scope="row">{{shipper.ShipperID}}</th>
         <td>{{shipper.CompanyName}}</td>
         <td>{{shipper.Phone}}</td>
 
         <td>
-            <button (click)="onEdit(shipper)" type="button" type="button" class="btn btn-success" (click)="openModal(template)">Update</button>
-            <button type="button" class="btn btn-danger mx-3" (click)="deleteShipper(shipper)">Delete</button>
+            <button (click)="onEdit(shipper)" type="button" type="button" class="btn btn-success" (click)="openModal(template)"> Update </button>
+            <button type="button" class="btn btn-danger mx-3" (click)="deleteShipper(shipper)"> Delete </button>
         </td>
       </tr>
     </tbody>
