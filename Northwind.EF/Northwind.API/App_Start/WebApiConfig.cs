@@ -12,7 +12,7 @@ namespace Northwind.API
         {
             // Web API configuration and services
             EnableCorsAttribute cors = new EnableCorsAttribute(
-                origins: "https://localhost:44337,http://localhost:4200", headers: "*", methods: "*");
+                origins: "*", headers: "*", methods: "*");
 
             config.EnableCors(cors);
 
