@@ -1,0 +1,71 @@
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+      <h1>Shippers List | Editor</h1>
+      <div class="d-flex">
+        <button type="button" class="btn btn-warning" (click)="openModal(template)" (click)="clickBtnAdd()">Add Shipper</button>
+      </div>
+  </div>
+</nav>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"><strong>Shipper Form</strong></h4>
+        <button type="button" class="btn-close"  aria-label="Close" (click)="modalRef.hide()"></button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="formValue" #formulario>
+
+        <div class="form-group">
+            <label class="col-form-label">Company Name</label>
+            <input formControlName="CompanyName" type="text" class="form-control" >
+            <span class="form-text text-danger"
+                  *ngIf="notValidField('CompanyName')">
+                  <br>
+              El Company Name no puede tener menos de 3 letras o tener más de 40 letras.
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" placeholder="(000)-000-0000">Phone</label>
+            <input formControlName="phone" type="text" class="form-control" mask="(000) 000-0000">
+            <span class="form-text text-danger"
+                  *ngIf="notValidField('phone')">
+                  <br>
+              El Phone no puede tener menos de 10 números.
+            </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Back</button>
+        <button type="submit" *ngIf="mostrarAdd" class="btn btn-danger mx-1" (click)="insertShipperDetails()">Add</button>
+        <button type="submit" *ngIf="mostrarUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()" [disabled]="formValue.pristine">Save</button>
+
+    </form>
+    </div>
+
+</ng-template>
+
+<table class="table mt-1">
+  <thead>
+    <tr>
+      <th scope="col">Shipper ID</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <h2 *ngIf="isLoading">Loading...</h2>
+      <tr *ngFor="let shipper of listShippers">
+
+        <th scope="row">{{shipper.ShipperId}}</th>
+        <td>{{shipper.CompanyName}}</td>
+        <td>{{shipper.Phone}}</td>
+
+        <td>
+            <button (click)="onEdit(shipper)" type="button" type="button" class="btn btn-success" (click)="openModal(template)">Update</button>
+            <button type="button" class="btn btn-danger mx-3" (click)="deleteShipper(shipper)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

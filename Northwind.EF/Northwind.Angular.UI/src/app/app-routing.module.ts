@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListFormComponent } from './modules/crud-shippers/components/ListForm/ListForm.component';
+import { ShipperFormComponent } from './modules/shippers/components/shipper-form/shipper-form.component';
 
 const routes: Routes = [{
     path: '',
-    component: ListFormComponent
+    component: ShipperFormComponent
   }
 ];
 
