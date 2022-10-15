@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Northwind.Angular.UI": {
+    "app-crud-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/northwind.angular.ui",
+            "outputPath": "dist/app-crud-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +29,9 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -74,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Northwind.Angular.UI:build:production"
+              "browserTarget": "app-crud-angular:build:production"
             },
             "development": {
-              "browserTarget": "Northwind.Angular.UI:build:development"
+              "browserTarget": "app-crud-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Northwind.Angular.UI:build"
+            "browserTarget": "app-crud-angular:build"
           }
         },
         "test": {
@@ -109,5 +111,5 @@
       }
     }
   },
-  "defaultProject": "Northwind.Angular.UI"
+  "defaultProject": "app-crud-angular"
 }
