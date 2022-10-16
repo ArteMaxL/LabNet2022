@@ -48,7 +48,7 @@ namespace Northwind.EF.Common
             Guid guid = Guid.NewGuid();
             string ID = guid.ToString().Substring(0, length);
 
-            return "Z" + ID;
+            return "Z" + ID.ToUpper();
         }
     }
 }
