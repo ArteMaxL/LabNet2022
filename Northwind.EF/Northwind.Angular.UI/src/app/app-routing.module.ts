@@ -4,6 +4,7 @@ import { ShipperFormComponent } from './modules/shippers/components/shipper-form
 import { HomeComponent } from './layout/home/home.component';
 import { CategoryFormComponent } from './modules/categories/components/category-form/category-form.component';
 import { CustomerFormComponent } from './modules/customers/components/customer-form/customer-form.component';
+import { FakestoreComponent } from './modules/fakestore/components/fakestore/fakestore.component';
 
 const routes: Routes = [{
     path: '',
@@ -20,6 +21,10 @@ const routes: Routes = [{
   {
     path: 'shippers',
     component: ShipperFormComponent
+  },
+  {
+    path: 'fakestoreapi',
+    component: FakestoreComponent
   }
 ];
 

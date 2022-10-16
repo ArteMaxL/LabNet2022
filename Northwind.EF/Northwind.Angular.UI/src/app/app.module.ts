@@ -14,6 +14,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CrudCategoriesModule } from './modules/categories/crud-categories.module';
 import { CrudCustomersModule } from './modules/customers/crud-customers.module';
+import { FakestoreModule } from './modules/fakestore/fakestore.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { CrudCustomersModule } from './modules/customers/crud-customers.module';
     CrudCategoriesModule,
     CrudCustomersModule,
     CrudShippersModule,
+    FakestoreModule,
     HttpClientModule,
     ModalModule.forRoot()
 
