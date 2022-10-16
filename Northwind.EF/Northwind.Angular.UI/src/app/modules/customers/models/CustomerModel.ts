@@ -1,7 +1,9 @@
 export class CustomerModel
 {
-  /*ShipperID: number;
+  CustomerID: string;
   CompanyName: string;
+  ContactName: string;
+  ContactTitle: string;
+  City: string;
   Phone: string;
-  */
 }
