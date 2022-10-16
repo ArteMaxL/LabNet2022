@@ -169,6 +169,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FakeStoreAPIController.cs" />
     <Compile Include="Controllers\FakeStoreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShipperController.cs" />
@@ -239,6 +240,7 @@
     <Folder Include="Content\img\" />
     <Folder Include="Views\Category\" />
     <Folder Include="Views\Customer\" />
+    <Folder Include="Views\FakeStoreAPI\" />
     <Folder Include="Views\Shipper\" />
   </ItemGroup>
   <ItemGroup>
