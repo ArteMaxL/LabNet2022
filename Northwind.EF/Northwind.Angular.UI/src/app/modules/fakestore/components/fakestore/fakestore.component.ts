@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FakeStoreModel } from '../../models/FakeStoreModel';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { DbFkConnectionService } from '../../services/db-fk-connection.service';
 
 @Component({

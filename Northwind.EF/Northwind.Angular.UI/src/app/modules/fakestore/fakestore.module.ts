@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -15,6 +16,7 @@ import { FakestoreComponent } from '../fakestore/components/fakestore/fakestore.
   imports: [
     CommonModule,
     MatCardModule,
+    MatGridListModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(),

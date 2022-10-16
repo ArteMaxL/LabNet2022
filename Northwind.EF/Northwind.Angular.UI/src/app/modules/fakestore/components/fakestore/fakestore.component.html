@@ -1,20 +1,31 @@
-<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-  <div *ngFor="let product of products" class="container mb-2">
-    <mat-card class="example-card">
+<mat-grid-list role="group" cols="4" rowHeight="500px">
+  <mat-grid-tile
+      *ngFor="let product of products"
+      [colspan]="1"
+      [rowspan]="1"
+
+      >
+    <mat-card class="card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{product.Title}}</mat-card-title>
-        <mat-card-subtitle>{{product.Category}}</mat-card-subtitle>
+        <mat-card-title class="limit-title">{{product.Title}}</mat-card-title>
+        <mat-card-subtitle>{{product.Category | uppercase}}</mat-card-subtitle>
       </mat-card-header>
-      <img class="" mat-card-image src="{{product.Image}}" alt="Photo of Item">
       <mat-card-content>
-        <p>{{product.Description}}</p>
+        <img mat-card-lg-image src="{{product.Image}}" alt="Photo of Item">
       </mat-card-content>
+      <mat-card-content class="desc-container">
+        <p class="limit">{{product.Description}}</p>
+      </mat-card-content>
+
       <mat-card-content>
       <div class="mt-2">
         <h2 style="font-size:larger" class="text-primary">${{product.Price}}</h2>
       </div>
       </mat-card-content>
+
     </mat-card>
-  </div>
-</div>
+
+  </mat-grid-tile>
+</mat-grid-list>
+
