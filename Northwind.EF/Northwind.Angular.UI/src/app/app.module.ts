@@ -13,20 +13,20 @@ import { CrudShippersModule } from './modules/shippers/crud.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { CrudCategoriesModule } from './modules/categories/crud-categories.module';
-import { CustomerFormComponent } from './modules/customers/components/customer-form/customer-form.component';
+import { CrudCustomersModule } from './modules/customers/crud-customers.module';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CustomerFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CrudShippersModule,
     CrudCategoriesModule,
+    CrudCustomersModule,
+    CrudShippersModule,
     HttpClientModule,
     ModalModule.forRoot()
 
