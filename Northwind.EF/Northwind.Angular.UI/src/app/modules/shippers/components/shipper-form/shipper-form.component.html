@@ -1,0 +1,71 @@
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+      <h1 class="text-white"> Shippers </h1>
+      <div class="d-flex">
+        <button type="button" class="btn btn-primary" (click)="openModal(template)" (click)="clickBtnAdd()">Add Shipper</button>
+      </div>
+  </div>
+</nav>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left"><strong>Shipper Form</strong></h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="formValue" #form>
+
+        <div class="form-group">
+            <label class="col-form-label"> Company Name </label>
+            <input formControlName="CompanyName" type="text" placeholder="xxxx"  class="form-control" >
+            <span class="form-text text-danger"
+                  *ngIf="notValidField('CompanyName')">
+                  <br>
+              <strong> Company Name min: {{minLengthCompanyName}}, max: {{maxLengthCompanyName}} characters. </strong>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label"> Phone </label>
+            <input formControlName="Phone" type="text" placeholder="(000) 000-0000" mask="(000) 000-0000" class="form-control">
+            <span class="form-text text-danger"
+                  *ngIf="notValidField('Phone')">
+                  <br>
+                  <strong> Phone number must have 10 numbers. </strong>
+            </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="modalRef.hide()"> Back </button>
+        <button type="submit" *ngIf="showAdd" class="btn btn-danger mx-1" (click)="insertShipperDetails()"> Add </button>
+        <button type="submit" *ngIf="showUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()" [disabled]="formValue.pristine"> Save </button>
+
+    </form>
+    </div>
+
+</ng-template>
+
+<table class="table table-hover mt-4">
+  <thead>
+    <tr>
+      <th scope="col"> Shipper ID </th>
+      <th scope="col" class=""> Company Name </th>
+      <th scope="col"> Phone </th>
+      <th scope="col"> Action </th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <h2 *ngIf="isLoading"> Loading... </h2>
+      <tr *ngFor="let shipper of shippers">
+
+        <th scope="row">{{shipper.ShipperID}}</th>
+        <td>{{shipper.CompanyName}}</td>
+        <td>{{shipper.Phone}}</td>
+
+        <td>
+            <button (click)="onEdit(shipper)" type="button" type="button" class="btn btn-success" (click)="openModal(template)"> Update </button>
+            <button type="button" class="btn btn-danger mx-3" (click)="deleteShipper(shipper)"> Delete </button>
+        </td>
+      </tr>
+    </tbody>
+</table>

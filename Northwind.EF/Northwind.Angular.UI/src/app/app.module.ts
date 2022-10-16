@@ -9,20 +9,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CrudShippersModule } from './modules/crud-shippers/crud-shippers.module';
-
-
+import { CrudShippersModule } from './modules/shippers/crud.module';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { CrudCategoriesModule } from './modules/categories/crud-categories.module';
+import { CustomerFormComponent } from './modules/customers/components/customer-form/customer-form.component';
 @NgModule({
   declarations: [
-    AppComponent
-
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    CustomerFormComponent,
   ],
   imports: [
-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CrudShippersModule,
+    CrudCategoriesModule,
     HttpClientModule,
     ModalModule.forRoot()
 
