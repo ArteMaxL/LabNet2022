@@ -4,3 +4,8 @@ body {
     padding: 0px;
     height: 100%;
 }
+
+.container{
+  position: relative;
+  min-height: 80%;
+}
